@@ -35,3 +35,5 @@ C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware
 C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware\obj\Debug\netcoreapp3.1\EngSoftware.pdb
 C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware\obj\Debug\netcoreapp3.1\EngSoftware.genruntimeconfig.cache
 C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware\obj\Debug\netcoreapp3.1\EngSoftware.csproj.CopyComplete
+C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware\obj\Debug\netcoreapp3.1\Razor\Views\Cadastro\Index.cshtml.g.cs
+C:\Users\Eduardo Martiniano\Desktop\Faculdade\Engenharia de Software\EngSoftware\obj\Debug\netcoreapp3.1\Razor\Views\Menu\Index.cshtml.g.cs
