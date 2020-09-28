@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\EngSoftware.csproj": {}
+    "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\EngSoftware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\EngSoftware.csproj": {
+    "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\EngSoftware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\EngSoftware.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\EngSoftware.csproj",
         "projectName": "EngSoftware",
-        "projectPath": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\EngSoftware.csproj",
+        "projectPath": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\EngSoftware.csproj",
         "packagesPath": "C:\\Users\\Eduardo Martiniano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

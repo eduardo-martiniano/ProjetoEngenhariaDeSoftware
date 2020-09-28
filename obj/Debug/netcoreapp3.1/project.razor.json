@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\EngSoftware.csproj",
+  "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\EngSoftware.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14392,43 +14392,63 @@
   "RootNamespace": "EngSoftware",
   "Documents": [
     {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Cadastro\\Index.cshtml",
-      "TargetPath": "Views\\Cadastro\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Shared\\_Layout.cshtml",
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Home\\Privacy.cshtml",
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Menu\\Index.cshtml",
+      "TargetPath": "Views\\Menu\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Home\\Index.cshtml",
+      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Tarefa\\Index.cshtml",
+      "TargetPath": "Views\\Tarefa\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\_ViewStart.cshtml",
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Tarefa\\Cadastro.cshtml",
+      "TargetPath": "Views\\Tarefa\\Cadastro.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Tarefa\\Todas.cshtml",
+      "TargetPath": "Views\\Tarefa\\Todas.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\Engenharia de Software\\EngSoftware\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Usuario\\Index.cshtml",
+      "TargetPath": "Views\\Usuario\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Eduardo Martiniano\\Desktop\\Faculdade\\prototipo\\ProjetoEngenhariaDeSoftware\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     }
   ],
