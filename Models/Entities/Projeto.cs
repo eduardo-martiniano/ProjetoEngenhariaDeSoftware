@@ -15,6 +15,7 @@ namespace EngSoftware.Models.Entities
         public string Descricao { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
+        public bool Ativo { get; set; }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
         public virtual ICollection<Pessoa> Pessoas { get; set; }
     }
