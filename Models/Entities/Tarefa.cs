@@ -12,12 +12,12 @@ namespace EngSoftware.Models.Entities
         [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Descricacao { get; set; }
+        public string Descricao { get; set; }
         public TarefaStatus Status { get; set; }
-        public int ProjetoId { get; set; }
+        public int? ProjetoId { get; set; }
         public int? PessoaId { get; set; }
-        public virtual Pessoa? Pessoa { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataFim { get; set; }
     }
 }

@@ -23,23 +23,12 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.Mensagem = "";
             return View();
         }
 
         [HttpPost]
         public IActionResult Index([FromForm] Pessoa pessoa)
         {
-            var dados = new Dados();
-            var pessoas = dados.GetPessoas();
-            foreach (var item in pessoas)
-            {
-                if (pessoa.Email == item.Email && pessoa.Senha == item.Senha)
-                {
-                    return RedirectToAction("Index", "Menu");
-                }
-            }
-            ViewBag.Mensagem = "senha invalida";
             return View();
         }
 

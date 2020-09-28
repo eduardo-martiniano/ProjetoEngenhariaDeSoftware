@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 style="text-align:center">Todas as tarefas</h2>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Status</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Previsão de termino</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tarefa in ViewBag.Tarefas)
+        {
+        <tr>
+            <th scope="row">@tarefa.Nome</th>
+            <td>@tarefa.Descricao</td>
+            <td>@tarefa.Status</td>
+            <td>@tarefa.DataInicio</td>
+            <td>@tarefa.DataFim</td>
+            <td>
+                <a href="/servico/atualizar/@tarefa.Id" class="btn btn-primary">Editar</a>
+                <a href="/servico/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

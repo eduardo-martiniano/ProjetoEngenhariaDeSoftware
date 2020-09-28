@@ -2,9 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EngSoftware.Contracts;
+using EngSoftware.Database;
+using EngSoftware.Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +27,13 @@ namespace EngSoftware
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ITarefaRepository, TarefaRepository>();
+            services.AddScoped<IProjetoRepository, ProjetoRepository>();
             services.AddControllersWithViews();
+            services.AddDbContext<ProjetoContext>(op =>
+            {
+                op.UseSqlite("Data Source=Database\\Data.db");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

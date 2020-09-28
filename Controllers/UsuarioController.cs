@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EngSoftware.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EngSoftware.Controllers
 {
-    public class CadastroController : Controller
+    public class UsuarioController : Controller
     {
         public IActionResult Index()
         {
