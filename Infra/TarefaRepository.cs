@@ -30,17 +30,18 @@ namespace EngSoftware.Infra
 
         public void Excluir(int tarefaId)
         {
-            throw new NotImplementedException();
+            _tarefaRepository.Remove(_tarefaRepository.Tarefas.Find(tarefaId));
+            _tarefaRepository.SaveChanges();
         }
 
         public Tarefa ObterPorId(int tarefaId)
         {
-            throw new NotImplementedException();
+            return _tarefaRepository.Tarefas.Find(tarefaId);
         }
 
         public List<Tarefa> ObterPorProjeto(int projetoId)
         {
-            return _tarefaRepository.Tarefas.Where(p => p.Id == projetoId).ToList();
+            return _tarefaRepository.Tarefas.Where(p => p.ProjetoId == projetoId).ToList();
         }
 
         public List<Tarefa> ObterPorStatus(int projetoId, TarefaStatus status)

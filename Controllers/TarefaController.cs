@@ -11,9 +11,11 @@ namespace EngSoftware.Controllers
     public class TarefaController : Controller
     {
         private ITarefaRepository _tarefaRepository;
-        public TarefaController(ITarefaRepository tarefaRepository)
+        private IProjetoRepository _projetoRepository;
+        public TarefaController(ITarefaRepository tarefaRepository, IProjetoRepository projetoRepository)
         {
             _tarefaRepository = tarefaRepository;
+            _projetoRepository = projetoRepository;
         }
         public IActionResult Index()
         {
@@ -23,16 +25,18 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult Cadastro()
         {
+            ViewBag.Projetos = _projetoRepository.ObterTodos();
             return View();
         }
 
         [HttpPost]
         public IActionResult Cadastro([FromForm] Tarefa tarefa)
         {
+            ViewBag.Projetos = _projetoRepository.ObterTodos();
             if (ModelState.IsValid)
             {
                 _tarefaRepository.Add(tarefa);
-                return Ok("Tarefa criada com sucesso!");
+                return RedirectToAction("Todas", "Tarefa", new {id = tarefa.ProjetoId});
             }
 
             return BadRequest("Algo deu errado");
@@ -43,6 +47,13 @@ namespace EngSoftware.Controllers
         {
             ViewBag.Tarefas = _tarefaRepository.ObterPorProjeto(id);
             return View();
+        }
+
+        public IActionResult Excluir(int id)
+        {
+            var tarefa = _tarefaRepository.ObterPorId(id);
+            _tarefaRepository.Excluir(id);
+            return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
         }
     }
 }
