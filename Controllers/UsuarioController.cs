@@ -24,14 +24,22 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult Cadastro()
         {
+            ViewBag.Sucesso = "";
             return View();
         }
 
         [HttpPost]
         public IActionResult Cadastro([FromForm] Pessoa usuario)
         {
+            if (_usuarioRepository.JaExiste(usuario))
+            {
+                ViewBag.Sucesso = "O usuario já existe!";
+                return View();
+            }
+
             _usuarioRepository.Add(usuario);
-            return Ok("Usuario Cadastrado com sucesso!");
+            ViewBag.Sucesso = "Cadastrado com sucesso!";
+            return View();
             
         }
 

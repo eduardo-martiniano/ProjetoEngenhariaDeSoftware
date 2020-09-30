@@ -13,5 +13,6 @@ namespace EngSoftware.Contracts
         void Excluir(int usuarioId);
         Pessoa GetId(int usuarioId);
         List<Pessoa> GetTodos();
+        bool JaExiste(Pessoa usuario);
     }
 }

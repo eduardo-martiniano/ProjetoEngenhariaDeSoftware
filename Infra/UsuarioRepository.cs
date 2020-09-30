@@ -41,5 +41,14 @@ namespace EngSoftware.Infra
         {
             return _usuarioRepository.Pessoas.ToList();
         }
+
+        public bool JaExiste(Pessoa usuario)
+        {
+            var pessoa = _usuarioRepository.Pessoas.Where(u => u.Email == usuario.Email).FirstOrDefault();
+            
+            if (pessoa == null) return false;
+
+            return true;
+        }
     }
 }

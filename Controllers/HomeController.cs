@@ -8,15 +8,18 @@ using Microsoft.Extensions.Logging;
 using EngSoftware.Models;
 using EngSoftware.Models.Entities;
 using EngSoftware.Database;
+using EngSoftware.Contracts;
 
 namespace EngSoftware.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUsuarioRepository _usuarioRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUsuarioRepository usuarioRepository, ILogger<HomeController> logger)
         {
+            _usuarioRepository = usuarioRepository;
             _logger = logger;
         }
 
@@ -29,6 +32,13 @@ namespace EngSoftware.Controllers
         [HttpPost]
         public IActionResult Index([FromForm] Pessoa pessoa)
         {
+            var usuarios = _usuarioRepository.GetTodos();
+            foreach (var item in usuarios)
+            {
+                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha)
+                    return RedirectToAction("Index", "Menu");
+            }
+            @ViewBag.Mensagem = "Usuario Invalido!";
             return View();
         }
 
