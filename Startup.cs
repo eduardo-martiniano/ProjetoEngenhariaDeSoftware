@@ -29,6 +29,7 @@ namespace EngSoftware
         {
             services.AddScoped<ITarefaRepository, TarefaRepository>();
             services.AddScoped<IProjetoRepository, ProjetoRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddControllersWithViews();
             services.AddDbContext<ProjetoContext>(op =>
             {
