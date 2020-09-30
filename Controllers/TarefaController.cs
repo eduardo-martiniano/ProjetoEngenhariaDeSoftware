@@ -37,10 +37,11 @@ namespace EngSoftware.Controllers
 
             return BadRequest("Algo deu errado");
         }
+
         [HttpGet]
-        public IActionResult Todas()
-        { 
-            ViewBag.Tarefas = _tarefaRepository.ObterPorProjeto(1);
+        public IActionResult Todas(int id)
+        {
+            ViewBag.Tarefas = _tarefaRepository.ObterPorProjeto(id);
             return View();
         }
     }

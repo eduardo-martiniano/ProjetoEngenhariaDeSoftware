@@ -36,7 +36,7 @@ namespace EngSoftware.Controllers
             foreach (var item in usuarios)
             {
                 if (item.Email == pessoa.Email && item.Senha == pessoa.Senha)
-                    return RedirectToAction("Index", "Menu");
+                    return RedirectToAction("Todos", "Projeto");
             }
             @ViewBag.Mensagem = "Usuario Invalido!";
             return View();

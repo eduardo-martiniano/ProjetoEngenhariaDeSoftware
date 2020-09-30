@@ -40,7 +40,7 @@ namespace EngSoftware.Infra
 
         public List<Tarefa> ObterPorProjeto(int projetoId)
         {
-            return _tarefaRepository.Tarefas.ToList();
+            return _tarefaRepository.Tarefas.Where(p => p.Id == projetoId).ToList();
         }
 
         public List<Tarefa> ObterPorStatus(int projetoId, TarefaStatus status)
