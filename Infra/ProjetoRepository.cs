@@ -29,7 +29,9 @@ namespace EngSoftware.Infra
 
         public void Excluir(int projetoId)
         {
-            throw new NotImplementedException();
+            var projeto = _projetoRepository.Projetos.Find(projetoId);
+            _projetoRepository.Projetos.Remove(projeto);
+            _projetoRepository.SaveChanges();
         }
 
         public Projeto ObterPorId(int projetoId)

@@ -40,5 +40,12 @@ namespace EngSoftware.Controllers
             return RedirectToAction("Todos", "Projeto");
         
         }
+
+        public IActionResult Excluir(int id)
+        {
+            _projetoRepository.Excluir(id);
+            return RedirectToAction("Todos", "Projeto");
+
+        }
     }
 }
