@@ -4,7 +4,6 @@
 @{
 }
 
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,32 +15,32 @@
         <aside class="col-sm-4">
             <div class="card">
                 <article class="card-body">
-                    <h4 class="card-title mb-4 mt-1">Propor um novo projeto</h4>
+                    <h4 class="card-title mb-4 mt-1">Editar projeto</h4>
                     <form method="post">
+                        <input type="hidden" name="id" value="@ViewBag.Projeto.Id"/>
                         <div class="form-group">
                             <label>Nome do Projeto</label>
-                            <input name="nome" placeholder="Nome" class="form-control" />
+                            <input name="nome" value="@ViewBag.Projeto.Nome" placeholder="Nome" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label>Descrição</label>
-                            <input name="descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
+                            <input name="descricao" value="@ViewBag.Projeto.Descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
                         </div>
 
                         <div class="form-group">
                             <label>Data de inicio</label>
-                            <input name="DataInicio" class="form-control" type="date" />
+                            <input name="DataInicio" value="@ViewBag.Projeto.DataInicio" placeholder="@ViewBag.Projeto.DataInicio.Date" class="form-control" type="date" />
                         </div>
 
                         <div class="form-group">
                             <label>Previsão de termino</label>
-                            <input name="DataFim" class="form-control" type="date" />
+                            <input name="DataFim" value="@ViewBag.Projeto.DataFim" placeholder="@ViewBag.Projeto.DataFim.Date" class="form-control" type="date" />
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" action="projeto/criar" class="btn btn-primary btn-block">Propor</button>
+                            <button type="submit" action="projeto/editar" class="btn btn-primary btn-block">Finalizar edição</button>
                         </div>
-                        <p style="color:red">@ViewBag.MensagemErro</p>
                     </form>
                 </article>
             </div>

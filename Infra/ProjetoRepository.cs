@@ -37,9 +37,10 @@ namespace EngSoftware.Infra
             _projetoRepository.SaveChanges();
         }
 
-        public void Editar(int projetoId)
+        public void Editar(Projeto projeto)
         {
-            throw new NotImplementedException();
+            _projetoRepository.Projetos.Update(projeto);
+            _projetoRepository.SaveChanges();
         }
 
         public void Excluir(int projetoId)
@@ -58,7 +59,7 @@ namespace EngSoftware.Infra
 
         public Projeto ObterPorId(int projetoId)
         {
-            throw new NotImplementedException();
+            return _projetoRepository.Projetos.Find(projetoId);
         }
 
         public List<Projeto> ObterPorStatus(ProjetoStatus status)

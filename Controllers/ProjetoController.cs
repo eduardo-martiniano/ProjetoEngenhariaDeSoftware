@@ -52,6 +52,7 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult Criar()
         {
+            ViewBag.MensagemErro = "";
             return View();
         }
 
@@ -64,7 +65,7 @@ namespace EngSoftware.Controllers
                 _projetoRepository.Add(projeto);
                 return RedirectToAction("TodosPendentes", "Projeto");
             }
-
+            ViewBag.MensagemErro = "Digite todos os dados!";
             return View();
         }
 
@@ -87,6 +88,20 @@ namespace EngSoftware.Controllers
             _projetoRepository.Negar(id);
 
             return RedirectToAction("TodosPendentes", "Projeto");
+        }
+        
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            ViewBag.Projeto = _projetoRepository.ObterPorId(id);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Editar([FromForm] Projeto projeto)
+        {
+            _projetoRepository.Editar(projeto);
+            return RedirectToAction("MenuCoordenador", "Menu");
         }
     }
 }

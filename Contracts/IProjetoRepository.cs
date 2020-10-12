@@ -11,7 +11,7 @@ namespace EngSoftware.Contracts
     {
         void Add(Projeto projeto);
         void Excluir(int projetoId);
-        void Editar(int projetoId);
+        void Editar(Projeto projeto);
         Projeto ObterPorId(int projetoId);
         List<Projeto> ObterTodos();
         List<Projeto> ObterPorStatus(ProjetoStatus status);
