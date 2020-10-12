@@ -13,6 +13,7 @@
             <th scope="col">Descrição</th>
             <th scope="col">Inicio</th>
             <th scope="col">Previsão de termino</th>
+            <th scope="auto">Aprovado</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
                 <td>@projeto.Descricao</td>
                 <td>@projeto.DataInicio</td>
                 <td>@projeto.DataFim</td>
+                <td>@projeto.Ativo</td>
                 <td>
                     <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
                     <a href="/servico/atualizar/@projeto.Id" class="btn btn-primary">Editar</a>

@@ -31,6 +31,12 @@ namespace EngSoftware.Controllers
         [HttpPost]
         public IActionResult Cadastro([FromForm] Pessoa usuario)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Sucesso = "Digite todos os valores";
+                return View();
+            }
+
             if (_usuarioRepository.JaExiste(usuario))
             {
                 ViewBag.Sucesso = "O usuario já existe!";
