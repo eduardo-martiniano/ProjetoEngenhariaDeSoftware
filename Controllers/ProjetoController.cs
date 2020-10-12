@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EngSoftware.Contracts;
 using EngSoftware.Models.Entities;
+using EngSoftware.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EngSoftware.Controllers
@@ -23,6 +24,27 @@ namespace EngSoftware.Controllers
         public IActionResult Todos()
         {
             ViewBag.Projetos = _projetoRepository.ObterTodos();
+            return View();
+        }
+        public IActionResult TodosEmAndamento()
+        {
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.ACEITO);
+            return View();
+        }
+        public IActionResult TodosPendentes()
+        {
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.AGUARDANDO);
+            return View();
+        }
+        public IActionResult TodosCancelados()
+        {
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.CANCELADO);
+            return View();
+        }
+
+        public IActionResult TodosConcluidos()
+        {
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.CONCLUIDO);
             return View();
         }
 

@@ -1,4 +1,5 @@
 ﻿using EngSoftware.Models.Entities;
+using EngSoftware.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,10 @@ namespace EngSoftware.Contracts
         void Editar(int projetoId);
         Projeto ObterPorId(int projetoId);
         List<Projeto> ObterTodos();
+        List<Projeto> ObterPorStatus(ProjetoStatus status);
+        void Aceitar(int projetoId);
+        void Negar(int projetoId);
+        void Cancelar(int projetoId);
+
     }
 }

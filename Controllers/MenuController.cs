@@ -12,5 +12,15 @@ namespace EngSoftware.Controllers
         {
             return View();
         }
+
+        public IActionResult MenuCoordenador()
+        {
+            return View();
+        }
+
+        public IActionResult MenuAluno()
+        {
+            return View();
+        }
     }
 }
