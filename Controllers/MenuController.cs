@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EngSoftware.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EngSoftware.Controllers
@@ -20,6 +21,8 @@ namespace EngSoftware.Controllers
 
         public IActionResult MenuAluno()
         {
+            List<Projeto> projetos = new List<Projeto>();
+            ViewBag.Projetos = projetos;
             return View();
         }
     }

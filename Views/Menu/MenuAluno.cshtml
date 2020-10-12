@@ -3,4 +3,33 @@
 *@
 @{
 }
-<h1>menu do aluno</h1>
+<h2 style="text-align:center">Projetos que você está vinculado</h2>
+
+<hr />
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Inicio</th>
+            <th scope="col">Previsão de termino</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var projeto in ViewBag.Projetos)
+        {
+            <tr>
+                <th scope="row">@projeto.Nome</th>
+                <td>@projeto.Descricao</td>
+                <td>@projeto.DataInicio</td>
+                <td>@projeto.DataFim</td>
+                <td>
+                    <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
+                    <a href="/servico/atualizar/@projeto.Id" class="btn btn-primary">Editar</a>
+                    <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

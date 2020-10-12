@@ -26,6 +26,7 @@ namespace EngSoftware.Controllers
             ViewBag.Projetos = _projetoRepository.ObterTodos();
             return View();
         }
+
         public IActionResult TodosEmAndamento()
         {
             ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.ACEITO);
