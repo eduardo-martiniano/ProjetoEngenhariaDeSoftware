@@ -26,6 +26,7 @@ namespace EngSoftware.Controllers
         public IActionResult Cadastro()
         {
             ViewBag.Projetos = _projetoRepository.ObterTodos();
+            ViewBag.Mensagem = "";
             return View();
         }
 
@@ -38,8 +39,8 @@ namespace EngSoftware.Controllers
                 _tarefaRepository.Add(tarefa);
                 return RedirectToAction("Todas", "Tarefa", new {id = tarefa.ProjetoId});
             }
-
-            return BadRequest("Algo deu errado");
+            ViewBag.Mensagem = "Campos invalidos!";
+            return View();
         }
 
         [HttpGet]
@@ -53,6 +54,23 @@ namespace EngSoftware.Controllers
         {
             var tarefa = _tarefaRepository.ObterPorId(id);
             _tarefaRepository.Excluir(id);
+            return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
+        }
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            ViewBag.Mensagem = "";
+            ViewBag.Projetos = _projetoRepository.ObterTodos();
+            ViewBag.Tarefa = _tarefaRepository.ObterPorId(id);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Editar([FromForm] Tarefa tarefa)
+        {
+            ViewBag.Mensagem = "Campos invalidos";
+            _tarefaRepository.Editar(tarefa);
             return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
         }
     }

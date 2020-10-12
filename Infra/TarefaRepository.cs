@@ -23,9 +23,10 @@ namespace EngSoftware.Infra
             _tarefaRepository.SaveChanges();
         }
 
-        public void Editar(int tarefaId)
+        public void Editar(Tarefa tarefa)
         {
-            throw new NotImplementedException();
+            _tarefaRepository.Tarefas.Update(tarefa);
+            _tarefaRepository.SaveChanges();
         }
 
         public void Excluir(int tarefaId)

@@ -3,6 +3,9 @@
 *@
 @{
 }
+
+
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,16 +17,17 @@
         <aside class="col-sm-4">
             <div class="card">
                 <article class="card-body">
-                    <h4 class="card-title mb-4 mt-1">Criar uma nova tarefa</h4>
+                    <h4 class="card-title mb-4 mt-1">Editar tarefa</h4>
                     <form method="post">
+                        <input type="hidden" name="id" value="@ViewBag.Tarefa.Id" />
                         <div class="form-group">
                             <label>Nome da tarefa</label>
-                            <input name="nome" placeholder="Nome" class="form-control" />
+                            <input name="nome" value="@ViewBag.Tarefa.Nome" placeholder="Nome" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label>Descrição</label>
-                            <input name="descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
+                            <input name="descricao" value="@ViewBag.Tarefa.Descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
                         </div>
                         <div class="form-group">
                             <label>Relacionar com o projeto</label>
@@ -47,16 +51,16 @@
 
                         <div class="form-group">
                             <label>Data de inicio</label>
-                            <input name="DataInicio" class="form-control" type="date" />
+                            <input name="DataInicio" value="@ViewBag.Tarefa.DataInicio" class="form-control" type="date" />
                         </div>
 
                         <div class="form-group">
                             <label>Previsão de termino</label>
-                            <input name="DataFim" class="form-control" type="date" />
+                            <input name="DataFim" value="@ViewBag.Tarefa.DataFim" class="form-control" type="date" />
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" action="tarefa/cadastro" class="btn btn-primary btn-block">Cadastrar</button>
+                            <button type="submit" action="tarefa/editar" class="btn btn-primary btn-block">Editar</button>
                         </div>
                         <p style="color:red">@ViewBag.Mensagem</p>
                     </form>

@@ -11,7 +11,7 @@ namespace EngSoftware.Contracts
     {
         void Add(Tarefa tarefa);
         void Excluir(int tarefaId);
-        void Editar(int tarefaId);
+        void Editar(Tarefa tarefa);
         Tarefa ObterPorId(int tarefaId);
         List<Tarefa> ObterPorProjeto(int projetoId);
         List<Tarefa> ObterPorStatus(int projetoId, TarefaStatus status);
