@@ -9,6 +9,7 @@ using EngSoftware.Models;
 using EngSoftware.Models.Entities;
 using EngSoftware.Database;
 using EngSoftware.Contracts;
+using EngSoftware.Models.Enums;
 
 namespace EngSoftware.Controllers
 {
@@ -35,8 +36,11 @@ namespace EngSoftware.Controllers
             var usuarios = _usuarioRepository.GetTodos();
             foreach (var item in usuarios)
             {
-                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha)
-                    return RedirectToAction("Todos", "Projeto");
+                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha && item.Tipo == TipoPessoa.Coodernador)
+                    return RedirectToAction("MenuCoordenador", "Menu");
+
+                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha && !(item.Tipo == TipoPessoa.Coodernador))
+                    return RedirectToAction("MenuAluno", "Menu");
             }
             @ViewBag.Mensagem = "Usuario Invalido!";
             return View();
