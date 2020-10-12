@@ -39,7 +39,7 @@ namespace EngSoftware.Controllers
         }
         public IActionResult TodosCancelados()
         {
-            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.CANCELADO);
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.NEGADO);
             return View();
         }
 
@@ -58,17 +58,35 @@ namespace EngSoftware.Controllers
         [HttpPost]
         public IActionResult Criar([FromForm] Projeto projeto)
         {
-            _projetoRepository.Add(projeto);
+            projeto.Status = ProjetoStatus.AGUARDANDO;
+            if (ModelState.IsValid)
+            {
+                _projetoRepository.Add(projeto);
+                return RedirectToAction("TodosPendentes", "Projeto");
+            }
 
-            return RedirectToAction("Todos", "Projeto");
-        
+            return View();
         }
 
         public IActionResult Excluir(int id)
         {
             _projetoRepository.Excluir(id);
-            return RedirectToAction("Todos", "Projeto");
+            return RedirectToAction("MenuCoordenador", "Menu");
 
+        }
+
+        public IActionResult Aprovar(int id)
+        {
+            _projetoRepository.Aceitar(id);
+
+            return RedirectToAction("TodosPendentes", "Projeto");
+        }
+
+        public IActionResult Negar(int id)
+        {
+            _projetoRepository.Negar(id);
+
+            return RedirectToAction("TodosPendentes", "Projeto");
         }
     }
 }
