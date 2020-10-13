@@ -2,6 +2,7 @@
 using EngSoftware.Database;
 using EngSoftware.Models.Entities;
 using EngSoftware.Models.Enums;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,9 +68,19 @@ namespace EngSoftware.Infra
             return _projetoRepository.Projetos.Where(p => p.Status == status).ToList();
         }
 
+        public List<Projeto> ObterPorUsuario(int usuarioId)
+        {
+            return _projetoRepository.Projetos
+                .Include(p => p.Pessoas)
+                .Where(p => p.Id == usuarioId)
+                .ToList();
+        }
+
         public List<Projeto> ObterTodos()
         {
             return _projetoRepository.Projetos.ToList();
         }
+
+        
     }
 }

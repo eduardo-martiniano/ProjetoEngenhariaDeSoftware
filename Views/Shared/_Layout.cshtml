@@ -18,15 +18,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Projeto" asp-action="Todos">INICIO</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">SOBRE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Menu" asp-action="MenuCoordenador">PROJETOS</a>
-                        </li>
+                        @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Coodernador)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Menu" asp-action="MenuCoordenador">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">SOBRE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Menu" asp-action="MenuCoordenador">PROJETOS</a>
+                            </li>
+                        }
+                        @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Aluno)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/menu/MenuAluno/@EngSoftware.Models.Usuario.Usuario._usuario.Id">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">SOBRE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/menu/MenuAluno/@EngSoftware.Models.Usuario.Usuario._usuario.Id">MEUS PROJETOS</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">SAIR</a>
                         </li>
