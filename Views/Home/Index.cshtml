@@ -4,36 +4,63 @@
 }
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(4, 120, 179, 0.9);
+    }
+    .sty{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 293px;
+        width: 293px;
+        background-color: rgb(0, 180, 241);
+        border-radius: 5px;
+    }
+    h1{
+        color: whitesmoke;
+        letter-spacing: 4px;
+        font-family: 'Staatliches', cursive;
+    }
 
+</style>
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <br />
-
-<div class="container">
-    <aside class="row justify-content-center align-items-center">
-        <aside class="col-sm-4">
-            <div class="card">
-                <article class="card-body">
-                    <a href="/usuario/cadastro" class="float-right btn btn-outline-primary">Cadastro</a>
-                    <h4 class="card-title mb-4 mt-1">LACIA</h4>
-                    <form method="post">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input name="email" class="form-control" placeholder="Email" type="email">
-                        </div> 
-                        <div class="form-group">
-                            <label>Senha</label>
-                            <input name="senha" class="form-control" placeholder="******" type="password">
-                        </div> 
-                        <div class="form-group">
-                            <button type="submit" action ="home/index" class="btn btn-primary btn-block"> Login</button>
-                        </div> 
-                    </form>
-                    <p style="color:red">@ViewBag.Mensagem</p>
-                </article>
+<body>>
+    <div class="container">
+        <aside class="row justify-content-center align-items-center">
+            <div class="sty">
+                <h1>Lacia</h1>
             </div>
+            <aside class="col-sm-4">
+                <div class="card">
+                    <article class="card-body">
+                        <a href="/usuario/cadastro" class="float-right btn btn-outline-primary">Cadastro</a>
+                        <br/>
+                        <form method="post">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input name="email" class="form-control" placeholder="Email" type="email">
+                            </div> 
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input name="senha" class="form-control" placeholder="******" type="password">
+                            </div> 
+                            <div class="form-group">
+                                <button type="submit" action ="home/index" class="btn btn-primary btn-block"> Login</button>
+                            </div> 
+                        </form>
+                        <p style="color:red">@ViewBag.Mensagem</p>
+                    </article>
+                </div>
+            </aside>
         </aside>
-    </aside>
 </div>
+</body>
