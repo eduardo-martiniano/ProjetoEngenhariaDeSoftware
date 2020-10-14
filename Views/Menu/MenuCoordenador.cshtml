@@ -5,24 +5,119 @@
 }
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+    a:hover{
+        text-decoration: none;
+    }
+    .general{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+    }
+    .carde{
+        display: grid;
+        grid-template-columns: 300px;
+        grid-template-rows:  210px 80px;
+        grid-template-areas: "text" "bacg";
+        font-family: 'Roboto', sans-serif;
+        border-radius: 18px;
+        background: white;
+        text-align: center;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+        margin-right: 5px;
+        transition: 0.5s ease;
+        cursor: pointer;
+    }
 
+    .carde:hover{
+        transform: scale(1.2);
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+    }
+
+    .card-text{
+        grid-area: text;
+    }
+
+    .card-color p{
+        color: white;
+        font-size: 15px;
+        font-weight: 300;
+
+    }
+
+    .card-text{
+        font-size: 28px;
+
+    }
+
+    .card-color{
+        grid-area: bacg;
+        border-radius: 0px 0px 18px 18px;
+    }
+
+</style>
 
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-<div style="text-align:center">
-    <div style="margin-top:100px">
-        <a href="/projeto/Criar" class="btn btn-dark">Propor um novo projeto</a>
+<div class="general">
+        <a href="/projeto/Criar" class="carde">
+            <div class="card-text">
+                <br>
+                <h2 style="color: #708090">Propor um novo Projeto</h2>
+            </div>
+            <div class="card-color" style="background-color: #708090;">
+                <br>
+                <p>Envie seu projeto para avaliação dos coordenadores</p>
+            </div>    
+        </a>
 
-        <a href="/projeto/TodosEmAndamento" class="btn btn-success">Projetos em andamento</a>
+        <a href="/projeto/TodosEmAndamento" class="carde">
+            <div class="card-text">
+                <br>
+                <h2 style="color: #2E8B57;">Projetos em Andamento</h2>
+            </div>
+            <div class="card-color" style="background-color: #2E8B57;">
+                <br>
+                <p>Projetos já aceitos e em processo de conclusão</p>
+            </div>
+        </a>
 
-        <a href="/projeto/TodosPendentes" class="btn btn-primary">Projetos em avaliação</a>
+        <a href="/projeto/TodosPendentes" class="carde">
+            <div class="card-text">
+                <br>
+                <h2 style="color: #132690">Projetos em Avaliação</h2>
+            </div>
+            <div class="card-color" style="background-color: #132690;">
+                <br>
+                <p>Projetos já propostos e atualmente em aberto para inspeção</p>
+            </div>
+        </a>
 
-        <a href="/projeto/TodosConcluidos" class="btn btn-secondary">Projetos Concluidos</a>
+        <a href="/projeto/TodosConcluidos" class="carde">
+            <div class="card-text">
+                <br>
+                <h2 style="color: #B8860B">Projetos Concluídos</h2>
+            </div>
+            <div class="card-color" style="background-color: #B8860B;">
+                <br>
+                <p>Projetos já finalizados e possivelmente executados</p>
+            </div>
+        </a>
 
-        <a href="/projeto/TodosCancelados" class="btn btn-danger">Projetos Cancelados</a>
-    </div>
+        <a href="/projeto/TodosCancelados" class="carde">
+            <div class="card-text">
+                <br>
+                <h2 style="color: #B22222">Projetos Cancelados</h2>
+            </div>
+            <div class="card-color" style="background-color: #B22222;">
+                <br>
+                <p>Projetos negados na avaliação ou durante o processo</p>
+            </div>
+        </a>
 </div>
 
 
