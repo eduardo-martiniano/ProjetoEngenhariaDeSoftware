@@ -37,6 +37,11 @@ namespace EngSoftware.Infra
             return _usuarioRepository.Pessoas.Find(usuarioId);
         }
 
+        public Pessoa GetNome(string nome)
+        {
+            return _usuarioRepository.Pessoas.Where(p => p.Nome == nome).FirstOrDefault();
+        }
+
         public List<Pessoa> GetTodos()
         {
             return _usuarioRepository.Pessoas.ToList();

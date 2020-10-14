@@ -65,7 +65,7 @@ namespace EngSoftware.Infra
 
         public List<Projeto> ObterPorStatus(ProjetoStatus status)
         {
-            return _projetoRepository.Projetos.Where(p => p.Status == status).ToList();
+            return _projetoRepository.Projetos.Include(p => p.Responsavel).Where(p => p.Status == status).ToList();
         }
 
         public List<Projeto> ObterPorUsuario(int usuarioId)

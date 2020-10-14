@@ -21,6 +21,7 @@ namespace EngSoftware.Models.Entities
         public DateTime DataFim { get; set; }
         [Required]
         public ProjetoStatus Status { get; set; }
+        public Pessoa Responsavel { get; set; }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
         public virtual ICollection<Pessoa> Pessoas { get; set; }
     }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EngSoftware.Contracts;
 using EngSoftware.Models.Entities;
 using EngSoftware.Models.Enums;
+using EngSoftware.Models.Usuario;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EngSoftware.Controllers
@@ -12,9 +13,11 @@ namespace EngSoftware.Controllers
     public class ProjetoController : Controller
     {
         private readonly IProjetoRepository _projetoRepository;
-        public ProjetoController(IProjetoRepository projetoRepository)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public ProjetoController(IProjetoRepository projetoRepository, IUsuarioRepository usuarioRepository)
         {
             _projetoRepository = projetoRepository;
+            _usuarioRepository = usuarioRepository;
         }
         public IActionResult Index()
         {
@@ -60,6 +63,8 @@ namespace EngSoftware.Controllers
         public IActionResult Criar([FromForm] Projeto projeto)
         {
             projeto.Status = ProjetoStatus.AGUARDANDO;
+            var pessoa = _usuarioRepository.GetId(Usuario._usuario.Id);
+            projeto.Responsavel = pessoa;
             if (ModelState.IsValid)
             {
                 _projetoRepository.Add(projeto);

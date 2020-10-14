@@ -14,5 +14,6 @@ namespace EngSoftware.Contracts
         Pessoa GetId(int usuarioId);
         List<Pessoa> GetTodos();
         bool JaExiste(Pessoa usuario);
+        Pessoa GetNome(string nome);
     }
 }
