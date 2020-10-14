@@ -60,7 +60,8 @@ namespace EngSoftware.Infra
 
         public Projeto ObterPorId(int projetoId)
         {
-            return _projetoRepository.Projetos.Find(projetoId);
+            return _projetoRepository.Projetos.Include(p => p.Responsavel)
+                .Where(p => p.Id == projetoId).FirstOrDefault();
         }
 
         public List<Projeto> ObterPorStatus(ProjetoStatus status)

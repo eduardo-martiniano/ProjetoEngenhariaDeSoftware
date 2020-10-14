@@ -69,9 +69,17 @@ namespace EngSoftware.Controllers
         [HttpPost]
         public IActionResult Editar([FromForm] Tarefa tarefa)
         {
-            ViewBag.Mensagem = "Campos invalidos";
-            _tarefaRepository.Editar(tarefa);
-            return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
+            if (ModelState.IsValid)
+            {
+                _tarefaRepository.Editar(tarefa);
+                return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
+            }
+            
+            ViewBag.Tarefa = _tarefaRepository.ObterPorId(tarefa.Id);
+            ViewBag.Projetos = _projetoRepository.ObterTodos();
+            ViewBag.MensagemErro = "Preencha todos os campos!";
+            return View();
+
         }
     }
 }

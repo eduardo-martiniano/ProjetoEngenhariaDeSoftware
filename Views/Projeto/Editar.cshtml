@@ -21,11 +21,12 @@
                         <div class="form-group">
                             <label>Nome do Projeto</label>
                             <input name="nome" value="@ViewBag.Projeto.Nome" placeholder="Nome" class="form-control" />
+                            <input type="hidden" name="responsavel" value="@ViewBag.Projeto.Responsavel"/>
                         </div>
 
                         <div class="form-group">
                             <label>Descrição</label>
-                            <input name="descricao" value="@ViewBag.Projeto.Descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
+                            <input name="descricao" name="" value="@ViewBag.Projeto.Descricao" class="form-control" placeholder="Descreva os os detalhes" type="text">
                         </div>
 
                         <div class="form-group">
@@ -41,6 +42,7 @@
                         <div class="form-group">
                             <button type="submit" action="projeto/editar" class="btn btn-primary btn-block">Finalizar edição</button>
                         </div>
+                        <p style="color: red;">@ViewBag.MensagemErro</p>
                     </form>
                 </article>
             </div>

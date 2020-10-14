@@ -102,14 +102,30 @@ namespace EngSoftware.Controllers
         public IActionResult Editar(int id)
         {
             ViewBag.Projeto = _projetoRepository.ObterPorId(id);
+            ViewBag.MensagemErro = "";
             return View();
         }
 
         [HttpPost]
         public IActionResult Editar([FromForm] Projeto projeto)
         {
-            _projetoRepository.Editar(projeto);
-            return RedirectToAction("MenuCoordenador", "Menu");
+            if(ModelState.IsValid)
+            {
+                _projetoRepository.Editar(projeto);
+
+                if (Usuario._usuario.Tipo == TipoPessoa.Pesquisador)
+                {
+                    return RedirectToAction("MenuPesquisador", "Menu");
+                }
+                if (Usuario._usuario.Tipo == TipoPessoa.Coodernador)
+                {
+                    return RedirectToAction("MenuCoordenador", "Menu");
+                }
+            }
+            ViewBag.Projeto = _projetoRepository.ObterPorId(projeto.Id);
+            ViewBag.MensagemErro = "Preencha todos os campos!";
+            return View();
+            
         }
     }
 }
