@@ -68,7 +68,10 @@ namespace EngSoftware.Controllers
             if (ModelState.IsValid)
             {
                 _projetoRepository.Add(projeto);
-                return RedirectToAction("TodosPendentes", "Projeto");
+                if(projeto.Responsavel.Tipo == TipoPessoa.Coodernador)
+                    return RedirectToAction("MenuCoordenador", "Menu");
+                else
+                    return RedirectToAction("MenuPesquisador", "Menu");
             }
             ViewBag.MensagemErro = "Digite todos os dados!";
             return View();

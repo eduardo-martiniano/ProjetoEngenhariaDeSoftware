@@ -27,8 +27,10 @@
             <td>@projeto.DataFim</td>
             <td>
                 <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
-                <a href="/projeto/editar/@projeto.Id" class="btn btn-primary">Editar</a>
-                <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger">Excluir</a>
+                @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Coodernador)
+                {
+                    <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger">Excluir</a>
+                }
             </td>
         </tr>
         }

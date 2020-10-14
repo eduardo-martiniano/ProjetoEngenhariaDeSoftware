@@ -25,6 +25,11 @@ namespace EngSoftware.Controllers
             return View();
         }
 
+        public IActionResult MenuPesquisador()
+        {
+            return View();
+        }
+
         public IActionResult MenuAluno(int alunoId)
         {
             var projetos = _projetoRepository.ObterPorUsuario(alunoId);

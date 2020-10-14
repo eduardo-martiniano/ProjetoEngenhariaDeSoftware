@@ -26,10 +26,12 @@
             <td>@projeto.DataInicio</td>
             <td>@projeto.DataFim</td>
             <td>
-                <a href="/projeto/aprovar/@projeto.Id" class="btn btn-success">Aprovar</a>
-                <a href="/projeto/negar/@projeto.Id" class="btn btn-warning">Recusar</a>
-                <a href="/projeto/editar/@projeto.Id" class="btn btn-primary">Editar</a>
-                <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger">Excluir</a>
+                <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
+                @if (projeto.Responsavel.Id != EngSoftware.Models.Usuario.Usuario._usuario.Id)
+                {
+                <a href="/projeto/aprovar/@projeto.Id" class="btn btn-primary">Aprovar</a>
+                <a href="/projeto/negar/@projeto.Id" class="btn btn-danger">Recusar</a>
+                }
             </td>
         </tr>
         }
