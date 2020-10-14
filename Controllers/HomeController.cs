@@ -46,7 +46,7 @@ namespace EngSoftware.Controllers
                 if (item.Email == pessoa.Email && item.Senha == pessoa.Senha && !(item.Tipo == TipoPessoa.Coodernador))
                 {
                     Usuario._usuario = item;
-                    return RedirectToAction("MenuAluno", "Menu", new { alunoId = item.Id });
+                    return RedirectToAction("MenuAluno", "Menu", new { pessoa = item });
                 }
             }
             @ViewBag.Mensagem = "Usuario Invalido!";

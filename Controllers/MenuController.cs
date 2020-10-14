@@ -30,9 +30,9 @@ namespace EngSoftware.Controllers
             return View();
         }
 
-        public IActionResult MenuAluno(int alunoId)
+        public IActionResult MenuAluno(Pessoa pessoa)
         {
-            var projetos = _projetoRepository.ObterPorUsuario(alunoId);
+            var projetos = _projetoRepository.ObterPorUsuario(pessoa);
             ViewBag.Projetos = projetos;
             return View();
         }
