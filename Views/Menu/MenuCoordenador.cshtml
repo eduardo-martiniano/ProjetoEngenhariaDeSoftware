@@ -9,6 +9,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
     a:hover{
         text-decoration: none;
     }
@@ -57,6 +61,93 @@
     .card-color{
         grid-area: bacg;
         border-radius: 0px 0px 18px 18px;
+        padding-top: 20px;
+    }
+
+    @@media only screen and (max-device-width: 1440px){
+        .carde{
+            grid-template-columns: 260px;
+            grid-template-rows:  182px 78px;
+        }
+        .container{
+            margin: 0 auto;
+        }
+        .card-color{
+            padding-top: 15px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 1024px){
+        .carde{
+            grid-template-columns: 195px;
+            grid-template-rows:  137px 58px;
+        }
+
+        .container{
+            margin: 0 auto;
+        }
+
+        .card-text h2{
+            font-size: 25px;
+        }
+        .card-color{
+            padding-top: 12px;
+        }
+        .card-color p{
+            font-size: 12px;
+        }
+        .general{
+            margin-top: 190px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 768px){
+        .container{
+            margin: 0 auto;
+        }
+        .carde{
+            grid-template-columns: 145px;
+            grid-template-rows:  102px 43px;
+        }
+        .card-color p{
+            font-size: 9px;
+        }
+
+        .card-color{
+            padding-top: 5px;
+        }
+
+         .card-text h2{
+            font-size: 20px;
+        }
+        .general{
+            margin-top: 230px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 425px){
+        .general{
+            flex-flow: wrap;
+            margin-top: 155px;
+        }
+        .carde{
+            margin-top: 5px;
+        }
+
+    }
+
+    @@media only screen and (max-device-width: 320px){
+        .general{
+            margin-top: 120px;
+        }
+        .carde{
+            grid-template-columns: 140px;
+            grid-template-rows:  98px 42px;
+        }
+        .card-color{
+            padding-top: 3px;
+        }
+
     }
 
 </style>
@@ -66,55 +157,50 @@
 <div class="general">
         <a href="/projeto/Criar" class="carde">
             <div class="card-text">
-                <br>
+                <br/>
                 <h2 style="color: #708090">Propor um novo Projeto</h2>
             </div>
             <div class="card-color" style="background-color: #708090;">
-                <br>
                 <p>Envie seu projeto para avaliação dos coordenadores</p>
             </div>    
         </a>
 
         <a href="/projeto/TodosEmAndamento" class="carde">
             <div class="card-text">
-                <br>
+                <br/>
                 <h2 style="color: #2E8B57;">Projetos em Andamento</h2>
             </div>
             <div class="card-color" style="background-color: #2E8B57;">
-                <br>
                 <p>Projetos já aceitos e em processo de conclusão</p>
             </div>
         </a>
 
         <a href="/projeto/TodosPendentes" class="carde">
             <div class="card-text">
-                <br>
+                <br/>
                 <h2 style="color: #132690">Projetos em Avaliação</h2>
             </div>
             <div class="card-color" style="background-color: #132690;">
-                <br>
                 <p>Projetos já propostos e atualmente em aberto para inspeção</p>
             </div>
         </a>
 
         <a href="/projeto/TodosConcluidos" class="carde">
             <div class="card-text">
-                <br>
+                <br/>
                 <h2 style="color: #B8860B">Projetos <br/> Concluídos</h2>
             </div>
             <div class="card-color" style="background-color: #B8860B;">
-                <br>
                 <p>Projetos já finalizados e possivelmente executados</p>
             </div>
         </a>
 
         <a href="/projeto/TodosCancelados" class="carde">
             <div class="card-text">
-                <br>
+                <br/>
                 <h2 style="color: #B22222">Projetos <br/> Cancelados</h2>
             </div>
             <div class="card-color" style="background-color: #B22222;">
-                <br>
                 <p>Projetos negados na avaliação ou durante o processo</p>
             </div>
         </a>
