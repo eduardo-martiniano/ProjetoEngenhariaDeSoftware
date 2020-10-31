@@ -2,9 +2,11 @@
 using EngSoftware.Database;
 using EngSoftware.Models.Entities;
 using EngSoftware.Models.Enums;
+using EngSoftware.Models.Usuario;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,6 +30,20 @@ namespace EngSoftware.Infra
         public void Add(Projeto projeto)
         {
             _projetoRepository.Projetos.Add(projeto);
+            _projetoRepository.SaveChanges();
+        }
+
+        public void AddUsuario(int projetoId, Pessoa pessoa)
+        {
+            var projeto = ObterPorId(projetoId);
+            if (projeto.Pessoas == null)
+            {
+                projeto.Pessoas = new Collection<Pessoa>();
+                projeto.Pessoas.Add(pessoa);
+                _projetoRepository.SaveChanges();
+                return;
+            }
+            projeto.Pessoas.Add(pessoa);
             _projetoRepository.SaveChanges();
         }
 
