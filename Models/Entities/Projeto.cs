@@ -23,6 +23,6 @@ namespace EngSoftware.Models.Entities
         public ProjetoStatus Status { get; set; }
         public Pessoa Responsavel { get; set; }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
-        public virtual ICollection<Pessoa> Pessoas { get; set; }
+        public ICollection<Pessoa> Pessoas { get; set; }
     }
 }

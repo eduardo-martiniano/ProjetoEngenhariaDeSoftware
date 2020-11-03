@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 style="text-align:center">Todos as pessoas que estão cadastradas no sitema</h2>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.TodosUsuarios != null)
+        {
+            @foreach (var pessoa in ViewBag.TodosUsuarios)
+            {
+                <tr>
+                    <th scope="row">@pessoa.Nome</th>
+                    <td>@pessoa.Email</td>
+                    <td>@pessoa.Tipo</td>
+                    <td>
+                        <a href="/projeto/AddUsuarioAoProjeto/?projetoId=@ViewBag.ProjetoId&usuarioId=@pessoa.Id" class="btn btn-primary">Associar</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

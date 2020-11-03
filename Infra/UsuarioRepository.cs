@@ -34,7 +34,7 @@ namespace EngSoftware.Infra
 
         public Pessoa GetId(int usuarioId)
         {
-            return _usuarioRepository.Pessoas.Find(usuarioId);
+            return _usuarioRepository.Pessoas.Where(u => u.Id == usuarioId).FirstOrDefault();
         }
 
         public Pessoa GetNome(string nome)
