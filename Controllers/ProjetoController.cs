@@ -125,7 +125,36 @@ namespace EngSoftware.Controllers
             ViewBag.Projeto = _projetoRepository.ObterPorId(projeto.Id);
             ViewBag.MensagemErro = "Preencha todos os campos!";
             return View();
-            
+        }
+
+        [HttpGet]
+        public IActionResult Detalhes(int id)
+        {
+            var projeto = _projetoRepository.ObterPorId(id);
+
+            ViewBag.ProjetoId = projeto.Id;
+
+            ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
+
+            ViewBag.Pessoas = projeto.Pessoas;
+
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult TodosOsUsuarios(int id)
+        {
+            ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
+            var projeto = _projetoRepository.ObterPorId(id);
+            ViewBag.ProjetoId = projeto.Id;
+            return View();
+        }
+
+        public IActionResult AddUsuarioAoProjeto(int projetoId, int usuarioId)
+        {
+            var usuario = _usuarioRepository.GetId(usuarioId);
+            _projetoRepository.AddUsuario(projetoId, usuario);
+            return RedirectToAction("Detalhes", "Projeto", new { id = projetoId });
         }
     }
 }
