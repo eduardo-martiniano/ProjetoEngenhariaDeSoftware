@@ -20,6 +20,7 @@ namespace EngSoftware.Contracts
         void Cancelar(int projetoId);
         List<Projeto> ObterPorUsuario(Pessoa pessoa);
         void AddUsuario(int projetoId, Pessoa pessoa);
+        List<Projeto> ProjetosRelacionadosAoUsuario(Pessoa pessoa);
 
     }
 }

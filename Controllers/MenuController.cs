@@ -11,9 +11,11 @@ namespace EngSoftware.Controllers
     public class MenuController : Controller
     {
         private readonly IProjetoRepository _projetoRepository;
-        public MenuController(IProjetoRepository projetoRepository)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public MenuController(IProjetoRepository projetoRepository, IUsuarioRepository usuarioRepository)
         {
             _projetoRepository = projetoRepository;
+            _usuarioRepository = usuarioRepository;
         }
         public IActionResult Index()
         {
@@ -30,9 +32,11 @@ namespace EngSoftware.Controllers
             return View();
         }
 
-        public IActionResult MenuAluno(Pessoa pessoa)
+        [HttpGet]
+        public IActionResult MenuAluno(int id)
         {
-            var projetos = _projetoRepository.ObterPorUsuario(pessoa);
+            var pessoa = _usuarioRepository.GetId(id);
+            var projetos = _projetoRepository.ProjetosRelacionadosAoUsuario(pessoa);
             ViewBag.Projetos = projetos;
             return View();
         }

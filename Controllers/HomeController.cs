@@ -43,10 +43,11 @@ namespace EngSoftware.Controllers
                     return RedirectToAction("MenuCoordenador", "Menu");
                 }
 
-                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha && !(item.Tipo == TipoPessoa.Coodernador))
+                if (item.Email == pessoa.Email && item.Senha == pessoa.Senha && item.Tipo == TipoPessoa.Aluno)
                 {
                     Usuario._usuario = item;
-                    return RedirectToAction("MenuAluno", "Menu", new { pessoa = item });
+
+                    return RedirectToAction("MenuAluno", "Menu", new { id = item.Id });
                 }
             }
             @ViewBag.Mensagem = "Usuario Invalido!";
