@@ -132,6 +132,8 @@ namespace EngSoftware.Controllers
         {
             var projeto = _projetoRepository.ObterPorId(id);
 
+            ViewBag.Projeto = projeto;
+
             ViewBag.ProjetoId = projeto.Id;
 
             ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();

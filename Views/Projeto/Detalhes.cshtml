@@ -4,7 +4,10 @@
 @{
 }
 <h2 style="text-align:center">Usuarios relacionados ao projeto</h2>
-<a href="/projeto/TodosOsUsuarios/@ViewBag.ProjetoId" class="btn btn-success">Adicione um novo usuario ao projeto</a>
+@if( @ViewBag.Projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+{
+    <a href="/projeto/TodosOsUsuarios/@ViewBag.ProjetoId" class="btn btn-success">Adicione um novo usuario ao projeto</a>
+}
 
 <table class="table">
     <thead class="thead-light">
