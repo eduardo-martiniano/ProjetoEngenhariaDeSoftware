@@ -11,7 +11,13 @@
 @{
 }
 <h2 style="text-align:center">Todas as tarefas</h2>
-<a href="/tarefa/cadastro" class="btn btn-success">Adicionar nova tarefa</a>
+@if( @ViewBag.Projeto.Status == EngSoftware.Models.Enums.ProjetoStatus.ACEITO)
+{
+    @if( @ViewBag.Projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+    {
+        <a href="/tarefa/cadastro/@ViewBag.Projeto.Id" class="btn btn-success">Adicionar nova tarefa</a>
+    }
+}
 <hr />
 
 <table class="table">
@@ -35,8 +41,11 @@
             <td>@tarefa.DataInicio</td>
             <td>@tarefa.DataFim</td>
             <td>
-                <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
-                <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+                @if( @ViewBag.Projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+                {
+                    <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
+                    <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+                }
             </td>
         </tr>
         }

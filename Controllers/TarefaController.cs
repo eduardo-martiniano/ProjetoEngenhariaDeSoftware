@@ -23,9 +23,10 @@ namespace EngSoftware.Controllers
         }
 
         [HttpGet]
-        public IActionResult Cadastro()
+        public IActionResult Cadastro(int id)
         {
-            ViewBag.Projetos = _projetoRepository.ObterTodos();
+            // ViewBag.Projetos = _projetoRepository.ObterTodos();
+            ViewBag.Projeto = _projetoRepository.ObterPorId(id);
             ViewBag.Mensagem = "";
             return View();
         }
@@ -47,6 +48,7 @@ namespace EngSoftware.Controllers
         public IActionResult Todas(int id)
         {
             ViewBag.Tarefas = _tarefaRepository.ObterPorProjeto(id);
+            ViewBag.Projeto = _projetoRepository.ObterPorId(id);
             return View();
         }
 
@@ -61,7 +63,9 @@ namespace EngSoftware.Controllers
         public IActionResult Editar(int id)
         {
             ViewBag.Mensagem = "";
-            ViewBag.Projetos = _projetoRepository.ObterTodos();
+            // ViewBag.Projetos = _projetoRepository.ObterTodos();
+            var tarefa = _tarefaRepository.ObterPorId(id);
+            ViewBag.Projeto = _projetoRepository.ObterPorId(tarefa.ProjetoId);
             ViewBag.Tarefa = _tarefaRepository.ObterPorId(id);
             return View();
         }
