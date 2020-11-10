@@ -1,4 +1,5 @@
 ﻿using EngSoftware.Models.Enums;
+using ProjetoEngenhariaDeSoftware.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,8 +22,9 @@ namespace EngSoftware.Models.Entities
         public DateTime DataFim { get; set; }
         [Required]
         public ProjetoStatus Status { get; set; }
+        public int ResponsavelId { get; set; }
         public Pessoa Responsavel { get; set; }
         public virtual ICollection<Tarefa> Tarefas { get; set; }
-        public ICollection<Pessoa> Pessoas { get; set; }
+        public ICollection<PessoaProjeto> PessoaProjetos { get; set; }
     }
 }

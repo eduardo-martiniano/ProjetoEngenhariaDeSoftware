@@ -138,7 +138,7 @@ namespace EngSoftware.Controllers
 
             ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
 
-            ViewBag.Pessoas = projeto.Pessoas;
+            ViewBag.Pessoas = projeto.PessoaProjetos.Select(p => p.Pessoa).ToList();
 
             return View();
         }

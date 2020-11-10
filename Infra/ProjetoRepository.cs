@@ -4,6 +4,7 @@ using EngSoftware.Models.Entities;
 using EngSoftware.Models.Enums;
 using EngSoftware.Models.Usuario;
 using Microsoft.EntityFrameworkCore;
+using ProjetoEngenhariaDeSoftware.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,15 +37,22 @@ namespace EngSoftware.Infra
         public void AddUsuario(int projetoId, Pessoa pessoa)
         {
             var projeto = ObterPorId(projetoId);
-            if (projeto.Pessoas == null)
+
+            var relacao = _projetoRepository.PessoaProjetos.Where(p => p.PessoaId == pessoa.Id && p.ProjetoId == projetoId).FirstOrDefault();
+
+            if (relacao == null)
             {
-                projeto.Pessoas = new Collection<Pessoa>();
-                projeto.Pessoas.Add(pessoa);
+                var pp = new PessoaProjeto() { PessoaId = pessoa.Id, ProjetoId = projetoId };
+                if (projeto.PessoaProjetos == null)
+                {
+                    projeto.PessoaProjetos = new Collection<PessoaProjeto>();
+                    projeto.PessoaProjetos.Add(pp);
+                    _projetoRepository.SaveChanges();
+                    return;
+                }
+                projeto.PessoaProjetos.Add(pp);
                 _projetoRepository.SaveChanges();
-                return;
             }
-            projeto.Pessoas.Add(pessoa);
-            _projetoRepository.SaveChanges();
         }
 
         public void Cancelar(int projetoId)
@@ -76,7 +84,9 @@ namespace EngSoftware.Infra
 
         public Projeto ObterPorId(int projetoId)
         {
-            return _projetoRepository.Projetos.Include(p => p.Responsavel)
+            return _projetoRepository.Projetos
+                                     .Include(p => p.Responsavel)
+                                     .Include(p => p.PessoaProjetos)
                 .Where(p => p.Id == projetoId).FirstOrDefault();
         }
 
@@ -87,7 +97,7 @@ namespace EngSoftware.Infra
 
         public List<Projeto> ObterPorUsuario(Pessoa pessoa)
         {
-            return _projetoRepository.Projetos.Where(p => p.Pessoas == pessoa).ToList();
+            return _projetoRepository.Projetos.Where(p => p.PessoaProjetos == pessoa).ToList();
         }
 
         public List<Projeto> ObterTodos()
@@ -98,8 +108,8 @@ namespace EngSoftware.Infra
         public List<Projeto> ProjetosRelacionadosAoUsuario(Pessoa pessoa)
         {
             return _projetoRepository.Projetos
-                                     .Include(p => p.Pessoas)
-                                     .Where(p => p.Pessoas.Select(a => a.Id)
+                                     .Include(p => p.PessoaProjetos)
+                                     .Where(p => p.PessoaProjetos.Select(a => a.PessoaId)
                                      .Contains(pessoa.Id))
                                      .ToList();
         }

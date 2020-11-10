@@ -1,5 +1,8 @@
 ﻿using EngSoftware.Models.Enums;
+using ProjetoEngenhariaDeSoftware.Models.Entities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EngSoftware.Models.Entities
 {
@@ -15,5 +18,6 @@ namespace EngSoftware.Models.Entities
         public string Senha { get; set; }
         [Required]
         public TipoPessoa Tipo { get; set; }
+        public ICollection<PessoaProjeto> PessoaProjetos { get; set; }
     }
 }
