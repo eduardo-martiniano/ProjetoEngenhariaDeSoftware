@@ -68,6 +68,7 @@ namespace EngSoftware.Controllers
             if (ModelState.IsValid)
             {
                 _projetoRepository.Add(projeto);
+                _projetoRepository.AddUsuario(projeto.Id, pessoa);
                 if(projeto.Responsavel.Tipo == TipoPessoa.Coodernador)
                     return RedirectToAction("MenuCoordenador", "Menu");
                 else
