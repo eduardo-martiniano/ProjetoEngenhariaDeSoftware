@@ -68,6 +68,7 @@ namespace EngSoftware.Controllers
             if (ModelState.IsValid)
             {
                 _projetoRepository.Add(projeto);
+                _projetoRepository.AddUsuario(projeto.Id, pessoa);
                 if(projeto.Responsavel.Tipo == TipoPessoa.Coodernador)
                     return RedirectToAction("MenuCoordenador", "Menu");
                 else
@@ -138,7 +139,7 @@ namespace EngSoftware.Controllers
 
             ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
 
-            ViewBag.Pessoas = projeto.Pessoas;
+            ViewBag.Pessoas = projeto.PessoaProjetos.Select(p => p.Pessoa).ToList();
 
             return View();
         }
