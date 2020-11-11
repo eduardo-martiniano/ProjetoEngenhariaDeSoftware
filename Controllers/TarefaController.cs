@@ -48,7 +48,9 @@ namespace EngSoftware.Controllers
         public IActionResult Todas(int id)
         {
             ViewBag.Tarefas = _tarefaRepository.ObterPorProjeto(id);
-            ViewBag.Projeto = _projetoRepository.ObterPorId(id);
+            var projeto = _projetoRepository.ObterPorId(id);
+            ViewBag.Projeto = projeto;
+            ViewBag.Equipe = _projetoRepository.UsuariosRelacionadasAoProjeto(projeto);
             return View();
         }
 
