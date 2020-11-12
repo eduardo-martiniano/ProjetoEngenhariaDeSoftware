@@ -108,6 +108,7 @@ namespace EngSoftware.Infra
         public List<Projeto> ProjetosRelacionadosAoUsuario(Pessoa pessoa)
         {
             return _projetoRepository.Projetos
+                                     .Include(p => p.Responsavel)
                                      .Include(p => p.PessoaProjetos)
                                      .Where(p => p.PessoaProjetos.Select(a => a.PessoaId)
                                      .Contains(pessoa.Id))
