@@ -41,10 +41,14 @@
             <td>@tarefa.DataInicio</td>
             <td>@tarefa.DataFim</td>
             <td>
-                @if( @ViewBag.Projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+            
+                @foreach (var pessoa in @ViewBag.Equipe)
                 {
-                    <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
-                    <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+                    @if( pessoa.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+                    {
+                        <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
+                        <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+                    }
                 }
             </td>
         </tr>

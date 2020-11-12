@@ -113,5 +113,13 @@ namespace EngSoftware.Infra
                                      .Contains(pessoa.Id))
                                      .ToList();
         }
+
+        public List<Pessoa> UsuariosRelacionadasAoProjeto(Projeto projeto)
+        {
+            return _projetoRepository.Pessoas.Include(p => p.PessoaProjetos)
+                                             .Where(p => p.PessoaProjetos.Select(a => a.ProjetoId)
+                                             .Contains(projeto.Id))
+                                             .ToList();
+        }
     }
 }
