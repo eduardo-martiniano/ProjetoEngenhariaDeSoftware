@@ -26,6 +26,7 @@
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
             <th scope="col">Status</th>
+            <th scope="col">Responsável</th>
             <th scope="col">Inicio</th>
             <th scope="col">Previsão de termino</th>
             <th scope="col">Ações</th>
@@ -38,6 +39,7 @@
             <th scope="row">@tarefa.Nome</th>
             <td>@tarefa.Descricao</td>
             <td>@tarefa.Status</td>
+            <td>@tarefa.Pessoa.Nome</td>
             <td>@tarefa.DataInicio</td>
             <td>@tarefa.DataFim</td>
             <td>
@@ -46,6 +48,7 @@
                 {
                     @if( pessoa.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
                     {
+                        <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success">Associar-se</a>
                         <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
                         <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
                     }
