@@ -38,7 +38,9 @@ namespace EngSoftware.Infra
 
         public Tarefa ObterPorId(int tarefaId)
         {
-            return _tarefaRepository.Tarefas.Find(tarefaId);
+            return _tarefaRepository.Tarefas.Include(t => t.Pessoa)
+                                            .Where(a => a.Id == tarefaId)
+                                            .FirstOrDefault();
         }
 
         public List<Tarefa> ObterPorProjeto(int projetoId)
@@ -46,7 +48,6 @@ namespace EngSoftware.Infra
             return _tarefaRepository.Tarefas.Include(t => t.Pessoa)
                                             .Where(t => t.ProjetoId == projetoId)
                                             .ToList();
-            //return _tarefaRepository.Tarefas.Where(p => p.ProjetoId == projetoId).ToList();
         }
 
         public List<Tarefa> ObterPorStatus(int projetoId, TarefaStatus status)

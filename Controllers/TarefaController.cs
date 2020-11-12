@@ -67,10 +67,9 @@ namespace EngSoftware.Controllers
         public IActionResult Editar(int id)
         {
             ViewBag.Mensagem = "";
-            // ViewBag.Projetos = _projetoRepository.ObterTodos();
             var tarefa = _tarefaRepository.ObterPorId(id);
             ViewBag.Projeto = _projetoRepository.ObterPorId(tarefa.ProjetoId);
-            ViewBag.Tarefa = _tarefaRepository.ObterPorId(id);
+            ViewBag.Tarefa = tarefa;
             return View();
         }
 
@@ -79,6 +78,10 @@ namespace EngSoftware.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (tarefa.PessoaId != null)
+                {
+                    tarefa.Pessoa = _usuarioRepository.GetId(tarefa.PessoaId.GetValueOrDefault());
+                }
                 _tarefaRepository.Editar(tarefa);
                 return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
             }
