@@ -39,7 +39,14 @@
             <th scope="row">@tarefa.Nome</th>
             <td>@tarefa.Descricao</td>
             <td>@tarefa.Status</td>
-            <td>@tarefa.Pessoa.Nome</td>
+            @if (tarefa.Pessoa == null)
+            {
+                <td>Sem responsável</td>
+            }
+            else
+            {
+                <td>@tarefa.Pessoa.Nome</td>
+            }
             <td>@tarefa.DataInicio</td>
             <td>@tarefa.DataFim</td>
             <td>
