@@ -12,10 +12,12 @@ namespace EngSoftware.Controllers
     {
         private ITarefaRepository _tarefaRepository;
         private IProjetoRepository _projetoRepository;
-        public TarefaController(ITarefaRepository tarefaRepository, IProjetoRepository projetoRepository)
+        private IUsuarioRepository _usuarioRepository;
+        public TarefaController(ITarefaRepository tarefaRepository, IProjetoRepository projetoRepository, IUsuarioRepository usuarioRepository)
         {
             _tarefaRepository = tarefaRepository;
             _projetoRepository = projetoRepository;
+            _usuarioRepository = usuarioRepository;
         }
         public IActionResult Index()
         {
@@ -65,10 +67,9 @@ namespace EngSoftware.Controllers
         public IActionResult Editar(int id)
         {
             ViewBag.Mensagem = "";
-            // ViewBag.Projetos = _projetoRepository.ObterTodos();
             var tarefa = _tarefaRepository.ObterPorId(id);
             ViewBag.Projeto = _projetoRepository.ObterPorId(tarefa.ProjetoId);
-            ViewBag.Tarefa = _tarefaRepository.ObterPorId(id);
+            ViewBag.Tarefa = tarefa;
             return View();
         }
 
@@ -77,6 +78,10 @@ namespace EngSoftware.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (tarefa.PessoaId != null)
+                {
+                    tarefa.Pessoa = _usuarioRepository.GetId(tarefa.PessoaId.GetValueOrDefault());
+                }
                 _tarefaRepository.Editar(tarefa);
                 return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
             }
@@ -85,7 +90,15 @@ namespace EngSoftware.Controllers
             ViewBag.Projetos = _projetoRepository.ObterTodos();
             ViewBag.MensagemErro = "Preencha todos os campos!";
             return View();
+        }
 
+        public IActionResult meAssociar(int tarefaId, int pessoaId)
+        {
+            var tarefa = _tarefaRepository.ObterPorId(tarefaId);
+            tarefa.Pessoa = _usuarioRepository.GetId(pessoaId);
+            tarefa.PessoaId = pessoaId;
+            _tarefaRepository.Editar(tarefa);
+            return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
         }
     }
 }
