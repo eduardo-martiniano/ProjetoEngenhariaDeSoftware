@@ -15,6 +15,7 @@
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
             <th scope="col">Tipo</th>
+            <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,15 @@
                     <th scope="row">@pessoa.Nome</th>
                     <td>@pessoa.Email</td>
                     <td>@pessoa.Tipo</td>
+                    <td>
+                        @if (pessoa != @ViewBag.Projeto.Responsavel)
+                        {
+                            @if (@ViewBag.projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+                            {
+                                <a href="/projeto/RemoveUsuarioDoProjeto/?projetoId=@ViewBag.Projeto.Id&usuarioId=@pessoa.Id" class="btn btn-danger">Remover</a>
+                            }
+                        }
+                    </td>
                 </tr>
             }
         }

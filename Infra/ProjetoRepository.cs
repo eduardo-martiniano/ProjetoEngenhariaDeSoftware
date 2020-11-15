@@ -122,5 +122,24 @@ namespace EngSoftware.Infra
                                              .Contains(projeto.Id))
                                              .ToList();
         }
+
+        public void RemoveUsuarioRelacionadoAoProjeto(Projeto projeto, Pessoa pessoa)
+        {
+            Boolean tem = false;
+            PessoaProjeto p = null;
+            foreach(PessoaProjeto pp in projeto.PessoaProjetos)
+            {
+                if(pp.Pessoa == pessoa)
+                {
+                    tem = true;
+                    p = pp;
+                }
+            }
+            if(tem)
+            {
+                projeto.PessoaProjetos.Remove(p);
+            }
+            _projetoRepository.SaveChanges();
+        }
     }
 }

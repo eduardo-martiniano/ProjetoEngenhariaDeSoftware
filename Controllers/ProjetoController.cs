@@ -159,5 +159,13 @@ namespace EngSoftware.Controllers
             _projetoRepository.AddUsuario(projetoId, usuario);
             return RedirectToAction("Detalhes", "Projeto", new { id = projetoId });
         }
+
+        public IActionResult RemoveUsuarioDoProjeto(int projetoId, int usuarioId)
+        {
+            var projeto = _projetoRepository.ObterPorId(projetoId);
+            var pessoa = _usuarioRepository.GetId(usuarioId);
+            _projetoRepository.RemoveUsuarioRelacionadoAoProjeto(projeto, pessoa);
+            return RedirectToAction("Detalhes", "Projeto", new { id = projetoId });
+        }
     }
 }
