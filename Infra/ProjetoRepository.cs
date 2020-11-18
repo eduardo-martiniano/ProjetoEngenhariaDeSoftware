@@ -64,7 +64,12 @@ namespace EngSoftware.Infra
 
         public void Editar(Projeto projeto)
         {
-            _projetoRepository.Projetos.Update(projeto);
+            var _projeto = ObterPorId(projeto.Id);
+            _projeto.Nome = projeto.Nome;
+            _projeto.Descricao = projeto.Descricao;
+            _projeto.DataInicio = projeto.DataInicio;
+            _projeto.DataFim = projeto.DataFim;
+            _projetoRepository.Projetos.Update(_projeto);
             _projetoRepository.SaveChanges();
         }
 
