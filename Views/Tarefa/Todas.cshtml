@@ -10,18 +10,120 @@
 *@
 @{
 }
+<head>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"/>
+    <style type="text/css">
+        div{
+            display:flex;
+            justify-content: center;
+        }
+        #botoes{
+            display: flex;
+            flex-direction: row;
+        }
+        .content-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.20);
+        }
+        .content-table thead tr{
+            background-color: rgb(0,123,255);
+            color: whitesmoke;
+            text-align: left;
+            font-weight: bold;
+
+        }
+
+        .content-table th,
+        .content-table td{
+            padding: 12px 15px;
+
+        }
+        .content-table tbody tr{
+            border-bottom: 1px solid #dddddd;
+        }
+        .content-table tbody tr:nth-of-type(even){
+            background-color: #f3f3f3;
+
+        }
+        #bta, #btv, #btve{
+            width: 60px;
+            font-size: 12px;
+            margin-right: 2px;
+        }
+
+        @@media only screen and (max-device-width: 1024px){
+            .content-table{
+                font-size: 0.9em;
+            }
+            #btv{
+                padding-left: 10px;
+            }
+            #btv, #bta, #btve{
+                font-size: 10px;
+                width: 50px;
+            }
+        }
+        @@media only screen and (max-device-width: 768px){
+            #botoes{
+                flex-direction: column;
+            }
+            #bta,#btve{
+                margin-bottom: 2px;
+            }
+        }
+        @@media only screen and (max-device-width: 425px){
+            .content-table{
+                font-size: 0.399em;
+            }
+            #btv, #bta, #btve{
+                font-size: 7px;
+                width: 40px;
+                margin-right: 0;
+            }
+            #btt{
+                font-size: 8px;
+                width: 110px;
+            }
+        }
+        @@media only screen and (max-device-width: 375px){
+             .content-table{
+                 font-size: 0.30em;
+             }
+              #btv, #bta, #btve{
+                font-size: 6px;
+                width: 30px;
+                padding: 3px 2.5px 3px 2.5px;
+            }
+         @@media only screen and (max-device-width: 320px){
+             .content-table{
+                 font-size: 0.2em;
+             }
+              #btv, #bta, #btve{
+                font-size: 5px;
+                width: 22px;
+            }
+         }
+    </style>
+</head>
 <h2 style="text-align:center">Todas as tarefas</h2>
 @if( @ViewBag.Projeto.Status == EngSoftware.Models.Enums.ProjetoStatus.ACEITO)
 {
     @if( @ViewBag.Projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
-    {
-        <a href="/tarefa/cadastro/@ViewBag.Projeto.Id" class="btn btn-success">Adicionar nova tarefa</a>
+    {   
+        <center>
+            <a href="/tarefa/cadastro/@ViewBag.Projeto.Id" class="btn btn-success" id="btt">Adicionar nova tarefa</a>
+        </center>
+        
     }
 }
 <hr />
 
-<table class="table">
-    <thead class="thead-light">
+<table class="content-table">
+    <thead>
         <tr>
             <th scope="col">Nome</th>
             <th scope="col">Descrição</th>
@@ -49,15 +151,15 @@
             }
             <td>@tarefa.DataInicio</td>
             <td>@tarefa.DataFim</td>
-            <td>
+            <td id="botoes">
             
                 @foreach (var pessoa in @ViewBag.Equipe)
                 {
                     @if( pessoa.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
                     {
-                        <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success">Associar-se</a>
-                        <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary">Editar</a>
-                        <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger">Excluir</a>
+                        <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success" id="btve">Entrar</a>
+                        <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary" id="bta">Editar</a>
+                        <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger" id="btv">Excluir</a>
                     }
                 }
             </td>
