@@ -167,5 +167,14 @@ namespace EngSoftware.Controllers
             _projetoRepository.RemoveUsuarioRelacionadoAoProjeto(projeto, pessoa);
             return RedirectToAction("Detalhes", "Projeto", new { id = projetoId });
         }
+
+        [HttpGet]
+        public IActionResult ProjetosDoPesquisador(int id)
+        {
+            var pesquisador = _usuarioRepository.GetId(id);
+            ViewBag.ProjetosDoPesquisador = _projetoRepository.ProjetosRelacionadosAoUsuario(pesquisador);
+
+            return View();
+        }
     }
 }

@@ -74,6 +74,18 @@
                                 <a class="nav" href="/menu/MenuAluno/@EngSoftware.Models.Usuario.Usuario._usuario.Id">MEUS PROJETOS</a>
                             </li>
                         }
+                        @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Pesquisador)
+                        {
+                            <li class="nav-item">
+                                <a class="nav" asp-area="" asp-controller="Menu" asp-action="MenuPesquisador">INICIO</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav" asp-area="" asp-controller="Home" asp-action="Privacy">SOBRE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav" asp-area="" asp-controller="Menu" asp-action="MenuPesquisador">PROJETOS</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav" asp-area="" asp-controller="Home" asp-action="Index">SAIR</a>
                         </li>

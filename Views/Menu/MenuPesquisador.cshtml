@@ -1,0 +1,195 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .general {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+    }
+
+    .carde {
+        display: grid;
+        grid-template-columns: 300px;
+        grid-template-rows: 210px 80px;
+        grid-template-areas: "text" "bacg";
+        font-family: 'Roboto', sans-serif;
+        border-radius: 18px;
+        background: white;
+        text-align: center;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+        margin-right: 5px;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+        .carde:hover {
+            transform: scale(1.2);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+        }
+
+    .card-text {
+        grid-area: text;
+    }
+
+    .card-color p {
+        color: white;
+        font-size: 15px;
+        font-weight: 300;
+    }
+
+    .card-text {
+        font-size: 28px;
+    }
+
+    .card-color {
+        grid-area: bacg;
+        border-radius: 0px 0px 18px 18px;
+        padding-top: 20px;
+    }
+
+    @@media only screen and (max-device-width: 1440px) {
+        .carde {
+            grid-template-columns: 260px;
+            grid-template-rows: 182px 78px;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .card-color {
+            padding-top: 15px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 1024px) {
+        .carde {
+            grid-template-columns: 195px;
+            grid-template-rows: 137px 58px;
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .card-text h2 {
+            font-size: 25px;
+        }
+
+        .card-color {
+            padding-top: 12px;
+        }
+
+            .card-color p {
+                font-size: 12px;
+            }
+
+        .general {
+            margin-top: 190px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 768px) {
+        .container {
+            margin: 0 auto;
+        }
+
+        .carde {
+            grid-template-columns: 145px;
+            grid-template-rows: 102px 43px;
+        }
+
+        .card-color p {
+            font-size: 9px;
+        }
+
+        .card-color {
+            padding-top: 5px;
+        }
+
+        .card-text h2 {
+            font-size: 20px;
+        }
+
+        .general {
+            margin-top: 230px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 425px) {
+        .general {
+            flex-flow: wrap;
+            margin-top: 155px;
+        }
+
+        .carde {
+            margin-top: 5px;
+        }
+    }
+
+    @@media only screen and (max-device-width: 320px) {
+        .general {
+            margin-top: 120px;
+        }
+
+        .carde {
+            grid-template-columns: 140px;
+            grid-template-rows: 98px 42px;
+        }
+
+        .card-color {
+            padding-top: 3px;
+        }
+    }
+</style>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<div class="general">
+    <a href="/projeto/Criar" class="carde">
+        <div class="card-text">
+            <br />
+            <h2 style="color: #708090">Propor um novo Projeto</h2>
+        </div>
+        <div class="card-color" style="background-color: #708090;">
+            <p>Envie seu projeto para avaliação dos coordenadores</p>
+        </div>
+    </a>
+
+    <a href="/projeto/TodosEmAndamento" class="carde">
+        <div class="card-text">
+            <br />
+            <h2 style="color: #2E8B57;">Projetos em Andamento</h2>
+        </div>
+        <div class="card-color" style="background-color: #2E8B57;">
+            <p>Projetos já aceitos e em processo de conclusão</p>
+        </div>
+    </a>
+
+    <a href="/projeto/ProjetosDoPesquisador/@EngSoftware.Models.Usuario.Usuario._usuario.Id" class="carde">
+        <div class="card-text">
+            <br />
+            <h2 style="color: #132690">Projetos que você está participando</h2>
+        </div>
+        <div class="card-color" style="background-color: #132690;">
+            <p>Projetos em que você está vinculado</p>
+        </div>
+    </a>
+</div>
