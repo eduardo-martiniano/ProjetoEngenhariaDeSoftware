@@ -51,6 +51,11 @@
             padding-left: 4px;
         }
 
+        .scrollable {
+            max-height: 70px;
+            overflow: auto;
+        }
+
         @@media only screen and (max-device-width: 1024px){
             .content-table{
                 font-size: 0.9em;
@@ -126,7 +131,7 @@
         {
         <tr>
             <th scope="row">@projeto.Nome</th>
-            <td>@projeto.Descricao</td>
+            <td><div class="scrollable">@projeto.Descricao</div></td>
             <td>@projeto.Responsavel.Nome</td>
             <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
             <td>@projeto.DataFim.ToString("dd/MM/yyyy")</td>

@@ -19,7 +19,9 @@ namespace EngSoftware.Models.Entities
         public int ProjetoId { get; set; }
         public int? PessoaId { get; set; }
         public virtual Pessoa Pessoa { get; set; }
+        [Required]
         public DateTime? DataInicio { get; set; }
+        [Required]
         public DateTime? DataFim { get; set; }
     }
 }

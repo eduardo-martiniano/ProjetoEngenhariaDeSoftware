@@ -34,7 +34,7 @@ namespace EngSoftware.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastro([FromForm] Tarefa tarefa)
+        public IActionResult Cadastro([FromForm] Tarefa tarefa, int projetoId)
         {
             ViewBag.Projetos = _projetoRepository.ObterTodos();
             if (ModelState.IsValid)
@@ -42,6 +42,7 @@ namespace EngSoftware.Controllers
                 _tarefaRepository.Add(tarefa);
                 return RedirectToAction("Todas", "Tarefa", new {id = tarefa.ProjetoId});
             }
+            ViewBag.Projeto = _projetoRepository.ObterPorId(projetoId);
             ViewBag.Mensagem = "Campos invalidos!";
             return View();
         }
@@ -74,7 +75,7 @@ namespace EngSoftware.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar([FromForm] Tarefa tarefa)
+        public IActionResult Editar([FromForm] Tarefa tarefa, int projetoId)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +86,7 @@ namespace EngSoftware.Controllers
                 _tarefaRepository.Editar(tarefa);
                 return RedirectToAction("Todas", "Tarefa", new { id = tarefa.ProjetoId });
             }
-            
+            ViewBag.Projeto = _projetoRepository.ObterPorId(projetoId);
             ViewBag.Tarefa = _tarefaRepository.ObterPorId(tarefa.Id);
             ViewBag.Projetos = _projetoRepository.ObterTodos();
             ViewBag.MensagemErro = "Preencha todos os campos!";
