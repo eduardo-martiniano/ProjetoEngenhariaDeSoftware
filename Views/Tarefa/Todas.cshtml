@@ -155,15 +155,23 @@
             {
                 <td width="200px">@tarefa.Pessoa.Nome</td>
             }
-            <td>@tarefa.DataInicio</td>
-            <td>@tarefa.DataFim</td>
+            <td>@tarefa.DataInicio.ToString("dd/MM/yyyy")</td>
+            <td>@tarefa.DataFim.ToString("dd/MM/yyyy")</td>
             <td id="botoes">
-            
+
                 @foreach (var pessoa in @ViewBag.Equipe)
                 {
-                    @if( pessoa.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
+                    @if (pessoa.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
                     {
-                        <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success" id="btve">Entrar</a>
+                        @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Aluno)
+                        {
+                            <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success" id="btve">Pegar tarefa</a>
+                        }
+                        else
+                        {
+                            <a href="/tarefa/meAssociar/?tarefaId=@tarefa.Id&pessoaId=@pessoa.Id" class="btn btn-success" id="btve">Entrar</a>
+                        }
+
                         <a href="/tarefa/editar/@tarefa.Id" class="btn btn-primary" id="bta">Editar</a>
                         <a href="/tarefa/excluir/@tarefa.Id" class="btn btn-danger" id="btv">Excluir</a>
                     }

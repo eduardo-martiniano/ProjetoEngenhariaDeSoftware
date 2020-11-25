@@ -57,8 +57,8 @@
                 <th scope="row">@projeto.Nome</th>
                 <td>@projeto.Descricao</td>
                 <td>@projeto.Responsavel.Nome</td>
-                <td>@projeto.DataInicio</td>
-                <td>@projeto.DataFim</td>
+                <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
+                <td>@projeto.DataFim.ToString("dd/MM/yyyy")</td>
                 <td>
                     @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Coodernador)
                     {
