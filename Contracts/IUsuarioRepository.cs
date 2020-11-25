@@ -16,5 +16,6 @@ namespace EngSoftware.Contracts
         bool JaExiste(Pessoa usuario);
         Pessoa GetNome(string nome);
         bool MaxCoordenadores();
+        void RemoveUsuarioCadastrado(int usuarioId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EngSoftware.Contracts;
 using EngSoftware.Database;
 using EngSoftware.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,17 @@ namespace EngSoftware.Infra
 
         public Pessoa GetId(int usuarioId)
         {
-            return _usuarioRepository.Pessoas.Where(u => u.Id == usuarioId).FirstOrDefault();
+            Pessoa pessoa = _usuarioRepository.Pessoas.Include(p => p.PessoaProjetos).Where(p => p.Id == usuarioId)
+                                             .FirstOrDefault();
+            foreach(var pp in pessoa.PessoaProjetos)
+            {
+                pessoa.PessoaProjetos = _usuarioRepository.PessoaProjetos.Include(p => p.Projeto).Include(p => p.Pessoa).Where(a => a.Pessoa == pessoa).ToList();
+            }
+            foreach(var pp in pessoa.PessoaProjetos)
+            {
+                pp.Projeto = _usuarioRepository.Projetos.Include(p => p.Tarefas).Include(p => p.Responsavel).Where(p => p.Id == pp.ProjetoId).FirstOrDefault();
+            }
+            return pessoa;
         }
 
         public Pessoa GetNome(string nome)
@@ -44,7 +55,15 @@ namespace EngSoftware.Infra
 
         public List<Pessoa> GetTodos()
         {
-            return _usuarioRepository.Pessoas.ToList();
+            List<Pessoa> list = _usuarioRepository.Pessoas.Include(p => p.PessoaProjetos)
+                                             .ToList();
+            foreach(var p in list)
+            {
+                p.PessoaProjetos = _usuarioRepository.PessoaProjetos.Include(p => p.Projeto).Include(p => p.Pessoa).Where(a => a.Pessoa == p).ToList();
+            }
+            
+            return list;
+
         }
 
         public bool JaExiste(Pessoa usuario)
@@ -64,6 +83,22 @@ namespace EngSoftware.Infra
             if (coordenadores.Count > 1) return true;
             
             return false;
+        }
+
+        public void RemoveUsuarioCadastrado(int usuarioId)
+        {
+            var pessoa = GetId(usuarioId);
+            // remove a pessoa de todos os projetos aos quais ela está associada
+            // não ocorre caso a pessoa seja responsável por um projeto, esse caso é testado na view antes de chegar aqui
+
+            List<Projeto> proj = new List<Projeto>();
+            foreach(var pp in pessoa.PessoaProjetos)
+            {
+                proj.Add(pp.Projeto);
+                _usuarioRepository.PessoaProjetos.Remove(pp);
+            }
+            _usuarioRepository.Pessoas.Remove(pessoa);
+            _usuarioRepository.SaveChanges();
         }
     }
 }

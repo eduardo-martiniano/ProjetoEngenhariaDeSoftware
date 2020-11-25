@@ -89,5 +89,11 @@ namespace EngSoftware.Controllers
 
             return RedirectToAction("TodosOsUsuarios", "Projeto", new { id = EngSoftware.Models.Usuario.Usuario.projetoId});
         }
+
+        public IActionResult RemoveUsuarioCadastrado(int usuarioId)
+        {
+            _usuarioRepository.RemoveUsuarioCadastrado(usuarioId);
+            return RedirectToAction("Todos", "Usuario");
+        }
     }
 }
