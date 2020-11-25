@@ -9,5 +9,7 @@ namespace EngSoftware.Models.Usuario
     public static class Usuario
     {
         public static Pessoa _usuario { get; set; }
+        public static int projetoId { get; set; }
+
     }
 }

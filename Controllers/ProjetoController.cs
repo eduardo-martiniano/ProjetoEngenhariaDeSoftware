@@ -147,6 +147,8 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult TodosOsUsuarios(int id)
         {
+            //Guardar em uma variavel estatica o projeto que estamos trabalhando
+            Usuario.projetoId = id;
             ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
             var projeto = _projetoRepository.ObterPorId(id);
             ViewBag.ProjetoId = projeto.Id;

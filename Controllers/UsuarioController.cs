@@ -54,5 +54,31 @@ namespace EngSoftware.Controllers
         {
             return Ok(_usuarioRepository.GetTodos());
         }
+
+        [HttpGet]
+        public IActionResult CadastroLogado()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public IActionResult CadastroLogado([FromForm] Pessoa usuario)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Sucesso = "Digite todos os valores";
+                return View();
+            }
+
+            if (_usuarioRepository.JaExiste(usuario))
+            {
+                ViewBag.Sucesso = "O usuario já existe!";
+                return View();
+            }
+
+            _usuarioRepository.Add(usuario);
+            ViewBag.Sucesso = "Cadastrado com sucesso!";
+            return RedirectToAction("TodosOsUsuarios", "Projeto", new { id = EngSoftware.Models.Usuario.Usuario.projetoId});
+        }
     }
 }
