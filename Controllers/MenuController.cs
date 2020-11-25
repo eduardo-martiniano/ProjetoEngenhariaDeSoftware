@@ -40,5 +40,11 @@ namespace EngSoftware.Controllers
             ViewBag.Projetos = projetos;
             return View();
         }
+
+        [HttpGet]
+        public IActionResult MenuAdministrador()
+        {
+            return View();
+        }
     }
 }

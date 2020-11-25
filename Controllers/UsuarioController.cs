@@ -52,18 +52,23 @@ namespace EngSoftware.Controllers
         [HttpGet]
         public IActionResult Todos()
         {
-            return Ok(_usuarioRepository.GetTodos());
+            ViewBag.TodosUsuarios = _usuarioRepository.GetTodos();
+            return View();
         }
 
         [HttpGet]
         public IActionResult CadastroLogado()
         {
+            ViewBag.MaxCoord = _usuarioRepository.MaxCoordenadores();
             return View();
         }
         
         [HttpPost]
         public IActionResult CadastroLogado([FromForm] Pessoa usuario)
         {
+            ViewBag.MaxCoord = _usuarioRepository.MaxCoordenadores();
+
+
             if (!ModelState.IsValid)
             {
                 ViewBag.Sucesso = "Digite todos os valores";
@@ -78,6 +83,10 @@ namespace EngSoftware.Controllers
 
             _usuarioRepository.Add(usuario);
             ViewBag.Sucesso = "Cadastrado com sucesso!";
+
+            if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == Models.Enums.TipoPessoa.ADMIN)
+                return RedirectToAction("MenuAdministrador", "Menu");
+
             return RedirectToAction("TodosOsUsuarios", "Projeto", new { id = EngSoftware.Models.Usuario.Usuario.projetoId});
         }
     }

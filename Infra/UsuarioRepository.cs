@@ -55,5 +55,15 @@ namespace EngSoftware.Infra
 
             return true;
         }
+
+        public bool MaxCoordenadores()
+        {
+            var coordenadores = _usuarioRepository.Pessoas
+                                                  .Where(p => p.Tipo == Models.Enums.TipoPessoa.Coodernador)
+                                                  .ToList();
+            if (coordenadores.Count > 1) return true;
+            
+            return false;
+        }
     }
 }

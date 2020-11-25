@@ -4,6 +4,7 @@
     {
         Coodernador,
         Pesquisador,
-        Aluno
+        Aluno,
+        ADMIN
     }
 }

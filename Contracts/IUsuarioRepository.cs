@@ -15,5 +15,6 @@ namespace EngSoftware.Contracts
         List<Pessoa> GetTodos();
         bool JaExiste(Pessoa usuario);
         Pessoa GetNome(string nome);
+        bool MaxCoordenadores();
     }
 }
