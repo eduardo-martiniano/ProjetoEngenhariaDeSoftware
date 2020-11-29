@@ -25,9 +25,16 @@ namespace EngSoftware.Infra
         }
 
         public void Editar(Tarefa tarefa)
-        {
-            _tarefaRepository.Tarefas.Update(tarefa);
+        {   
+            var _tarefa = ObterPorId(tarefa.Id);
+            _tarefa.Nome = tarefa.Nome;
+            _tarefa.Status = tarefa.Status;
+            _tarefa.Descricao = tarefa.Descricao;
+            _tarefa.DataFim = tarefa.DataFim;
+            _tarefa.DataInicio = _tarefa.DataInicio;
+            _tarefaRepository.Tarefas.Update(_tarefa);
             _tarefaRepository.SaveChanges();
+            
         }
 
         public void Excluir(int tarefaId)
