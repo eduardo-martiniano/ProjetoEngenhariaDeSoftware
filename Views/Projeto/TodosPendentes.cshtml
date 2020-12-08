@@ -35,6 +35,44 @@
             background-color: #f3f3f3;
 
         }
+         #bta, #btv, #btve{
+            width: 60px;
+            font-size: 12px;
+            margin-right: 2px;
+            margin-bottom: 2px;
+        }
+        #btv, #bta{
+            padding-left: 9px;
+        }
+        .scrollable{
+            max-height: 70px;
+            overflow: auto;
+        }
+
+        @@media only screen and (max-device-width: 425px){
+            .content-table{
+                font-size: 0.399em;
+            }
+            #bta, #btv, #btve{
+                font-size: 7px;
+                width: 40px;
+            }
+        }
+         @@media only screen and (max-device-width: 320px){
+            .content-table{
+                 font-size: 0.3em;
+              }
+              #bta, #btv, #btve{
+                font-size: 5px;
+                width: 30px;
+               }
+            #btv, #bta{
+            padding-left: 5px;
+            }
+            #btve{
+                padding-left: 9px;
+            }
+         }
     </style>
 </head>
 <h2 style="text-align:center">Projetos pendentes em avaliação</h2>
@@ -55,16 +93,16 @@
         {
         <tr>
             <th scope="row">@projeto.Nome</th>
-            <td>@projeto.Descricao</td>
+            <td><div class="scrollable">@projeto.Descricao</div></td>
             <td>@projeto.Responsavel.Nome</td>
             <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
             <td>@projeto.DataFim.ToString("dd/MM/yyyy")</td>
             <td>
-                <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
+                <a href="/tarefa/todas/@projeto.Id" class="btn btn-success" id="btve">Abrir</a>
                 @if (projeto.Responsavel.Id != EngSoftware.Models.Usuario.Usuario._usuario.Id)
                 {
-                <a href="/projeto/aprovar/@projeto.Id" class="btn btn-primary">Aprovar</a>
-                <a href="/projeto/negar/@projeto.Id" class="btn btn-danger">Recusar</a>
+                <a href="/projeto/aprovar/@projeto.Id" class="btn btn-primary" id="bta">Aprovar</a>
+                <a href="/projeto/negar/@projeto.Id" class="btn btn-danger" id="btv">Recusar</a>
                 }
             </td>
         </tr>
