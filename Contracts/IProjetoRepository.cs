@@ -23,5 +23,6 @@ namespace EngSoftware.Contracts
         List<Projeto> ProjetosRelacionadosAoUsuario(Pessoa pessoa);
         List<Pessoa> UsuariosRelacionadasAoProjeto(Projeto projeto);
         void RemoveUsuarioRelacionadoAoProjeto(Projeto projeto, Pessoa pessoa);
+        void Concluir(int id);
     }
 }

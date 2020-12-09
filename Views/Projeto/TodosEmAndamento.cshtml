@@ -139,6 +139,7 @@
             <td>
                 <a href="/tarefa/todas/@projeto.Id" class="btn btn-success" id="btve">Abrir</a>
                 <a href="/projeto/detalhes/@projeto.Id " class="btn btn-secondary" id="btc">Membros</a>
+                <a href="/projeto/concluir/@projeto.Id" class="btn btn-success" id="btv" style="padding:5px">Concluir</a>
                 @if (projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
                 {
                     <a href="/projeto/editar/@projeto.Id" class="btn btn-primary" id="bta">Editar</a>

@@ -90,6 +90,7 @@ namespace EngSoftware.Infra
         public Projeto ObterPorId(int projetoId)
         {
             return _projetoRepository.Projetos
+                                     .Include(p => p.Tarefas)
                                      .Include(p => p.Responsavel)
                                      .Include(p => p.PessoaProjetos)
                 .Where(p => p.Id == projetoId).FirstOrDefault();
@@ -144,6 +145,13 @@ namespace EngSoftware.Infra
             {
                 projeto.PessoaProjetos.Remove(p);
             }
+            _projetoRepository.SaveChanges();
+        }
+
+        public void Concluir(int id)
+        {
+            var projeto = _projetoRepository.Projetos.Where(p => p.Id == id).FirstOrDefault();
+            projeto.Status = ProjetoStatus.CONCLUIDO;
             _projetoRepository.SaveChanges();
         }
     }

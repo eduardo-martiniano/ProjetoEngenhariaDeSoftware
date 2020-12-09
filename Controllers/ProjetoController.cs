@@ -6,6 +6,7 @@ using EngSoftware.Contracts;
 using EngSoftware.Models.Entities;
 using EngSoftware.Models.Enums;
 using EngSoftware.Models.Usuario;
+using EngSoftware.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EngSoftware.Controllers
@@ -14,6 +15,7 @@ namespace EngSoftware.Controllers
     {
         private readonly IProjetoRepository _projetoRepository;
         private readonly IUsuarioRepository _usuarioRepository;
+
         public ProjetoController(IProjetoRepository projetoRepository, IUsuarioRepository usuarioRepository)
         {
             _projetoRepository = projetoRepository;
@@ -83,6 +85,19 @@ namespace EngSoftware.Controllers
             _projetoRepository.Excluir(id);
             return RedirectToAction("MenuCoordenador", "Menu");
 
+        }
+
+        public IActionResult Concluir(int id)
+        {
+            var _projetoService = new ProjetoService(_projetoRepository);
+            var resposta = _projetoService.ProjetoPodeSerConcluido(id);
+
+            if (resposta)
+            {
+                _projetoRepository.Concluir(id);
+            }
+
+            return RedirectToAction("MenuCoordenador", "Menu");
         }
 
         public IActionResult Aprovar(int id)
