@@ -97,7 +97,13 @@ namespace EngSoftware.Controllers
                 _projetoRepository.Concluir(id);
             }
 
-            return RedirectToAction("MenuCoordenador", "Menu");
+            var projeto = _projetoRepository.ObterPorId(id);
+
+            if(projeto.Responsavel.Tipo == EngSoftware.Models.Enums.TipoPessoa.Pesquisador)
+            {
+                return RedirectToAction("MenuPesquisador", "Menu");
+            }
+            else return RedirectToAction("MenuCoordenador", "Menu");
         }
 
         public IActionResult Cancelar(int id)
@@ -202,8 +208,14 @@ namespace EngSoftware.Controllers
         public IActionResult ProjetosDoPesquisador(int id)
         {
             var pesquisador = _usuarioRepository.GetId(id);
-            ViewBag.ProjetosDoPesquisador = _projetoRepository.ProjetosRelacionadosAoUsuario(pesquisador);
-
+            List<Projeto> p_temp = _projetoRepository.ProjetosRelacionadosAoUsuario(pesquisador);
+            List<Projeto> p_final = new List<Projeto>();
+            foreach(Projeto projeto in p_temp)
+            {
+                if(projeto.Status == EngSoftware.Models.Enums.ProjetoStatus.ACEITO) p_final.Add(projeto);
+            }
+            ViewBag.ProjetosDoPesquisador = p_final;
+            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.ACEITO);
             return View();
         }
     }

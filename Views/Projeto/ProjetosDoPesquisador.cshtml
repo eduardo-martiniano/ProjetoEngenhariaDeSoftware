@@ -111,8 +111,9 @@
                     <a href="/projeto/detalhes/@projeto.Id " class="btn btn-secondary" id="btc">Membros</a>
                     @if (projeto.Responsavel.Id == EngSoftware.Models.Usuario.Usuario._usuario.Id)
                     {
+                        <a href="/projeto/concluir/@projeto.Id" class="btn btn-success" id="btv" style="padding:5px">Concluir</a>
                         <a href="/projeto/editar/@projeto.Id" class="btn btn-primary" id="bta">Editar</a>
-                        <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger" id="btv">Excluir</a>
+                        <a href="/projeto/cancelar/@projeto.Id" class="btn btn-danger" id="btv" style="padding:5px">Cancelar</a>
                     }
                 </td>
             </tr>
