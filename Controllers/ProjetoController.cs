@@ -115,8 +115,14 @@ namespace EngSoftware.Controllers
             {
                 _projetoRepository.Cancelar(id);
             }
+            
+            var projeto = _projetoRepository.ObterPorId(id);
 
-            return RedirectToAction("MenuCoordenador", "Menu");
+            if(projeto.Responsavel.Tipo == EngSoftware.Models.Enums.TipoPessoa.Pesquisador)
+            {
+                return RedirectToAction("MenuPesquisador", "Menu");
+            }
+            else return RedirectToAction("MenuCoordenador", "Menu");
         }
 
         public IActionResult Aprovar(int id)
