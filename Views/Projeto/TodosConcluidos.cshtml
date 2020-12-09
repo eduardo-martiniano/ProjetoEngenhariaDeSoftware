@@ -60,7 +60,6 @@
             <td>@projeto.DataInicio.ToString("dd/MM/yyyy")</td>
             <td>@projeto.DataFim.ToString("dd/MM/yyyy")</td>
             <td>
-                <a href="/tarefa/todas/@projeto.Id" class="btn btn-success">Abrir</a>
                 @if (EngSoftware.Models.Usuario.Usuario._usuario.Tipo == EngSoftware.Models.Enums.TipoPessoa.Coodernador)
                 {
                     <a href="/projeto/excluir/@projeto.Id" class="btn btn-danger">Excluir</a>

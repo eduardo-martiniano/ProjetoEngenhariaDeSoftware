@@ -55,13 +55,6 @@ namespace EngSoftware.Infra
             }
         }
 
-        public void Cancelar(int projetoId)
-        {
-            var projeto = _projetoRepository.Projetos.Find(projetoId);
-            projeto.Status = ProjetoStatus.CANCELADO;
-            _projetoRepository.SaveChanges();
-        }
-
         public void Editar(Projeto projeto)
         {
             var _projeto = ObterPorId(projeto.Id);
@@ -99,6 +92,11 @@ namespace EngSoftware.Infra
         public List<Projeto> ObterPorStatus(ProjetoStatus status)
         {
             return _projetoRepository.Projetos.Include(p => p.Responsavel).Where(p => p.Status == status).ToList();
+        }
+
+        public List<Projeto> CanceladosEnegados()
+        {
+            return _projetoRepository.Projetos.Include(p => p.Responsavel).Where(p => p.Status == ProjetoStatus.CANCELADO || p.Status == ProjetoStatus.NEGADO).ToList();
         }
 
         public List<Projeto> ObterPorUsuario(Pessoa pessoa)
@@ -152,6 +150,13 @@ namespace EngSoftware.Infra
         {
             var projeto = _projetoRepository.Projetos.Where(p => p.Id == id).FirstOrDefault();
             projeto.Status = ProjetoStatus.CONCLUIDO;
+            _projetoRepository.SaveChanges();
+        }
+
+        public void Cancelar(int id)
+        {
+            var projeto = _projetoRepository.Projetos.Where(p => p.Id == id).FirstOrDefault();
+            projeto.Status = ProjetoStatus.CANCELADO;
             _projetoRepository.SaveChanges();
         }
     }

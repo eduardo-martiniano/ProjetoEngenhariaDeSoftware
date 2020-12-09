@@ -44,7 +44,7 @@ namespace EngSoftware.Controllers
         }
         public IActionResult TodosCancelados()
         {
-            ViewBag.Projetos = _projetoRepository.ObterPorStatus(ProjetoStatus.NEGADO);
+            ViewBag.Projetos = _projetoRepository.CanceladosEnegados();
             return View();
         }
 
@@ -95,6 +95,19 @@ namespace EngSoftware.Controllers
             if (resposta)
             {
                 _projetoRepository.Concluir(id);
+            }
+
+            return RedirectToAction("MenuCoordenador", "Menu");
+        }
+
+        public IActionResult Cancelar(int id)
+        {
+            var _projetoService = new ProjetoService(_projetoRepository);
+            var resposta = _projetoService.ProjetoPodeSerConcluido(id);
+
+            if (resposta)
+            {
+                _projetoRepository.Cancelar(id);
             }
 
             return RedirectToAction("MenuCoordenador", "Menu");
